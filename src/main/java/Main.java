@@ -1,17 +1,35 @@
-import java.util.concurrent.TimeUnit;
+import java.util.Scanner;
 public class Main {
     private static final String name = "SteadyBot";
-
-    /** Simple method to greet human user, deliberately waiting 5 seconds
-     *  before greeting and saying goodbye for a more natural user experience.
-     *  */
-    public static void greet() throws InterruptedException {
+    /**
+     * Simple method to greet human user.
+     */
+    public static void greet() {
         System.out.println("Hello! I'm " + Main.name);
         System.out.println("What can I do for you?");
-        TimeUnit.SECONDS.sleep(5);
+    }
+
+    /**
+     * Simple method to say goodbye to human user.
+     */
+    public static void goodbye() {
         System.out.println("Bye. Hope to see you again soon!");
     }
-    public static void main(String[] args) throws InterruptedException {
+
+    /**
+     * Main method of class Main.
+     * @param args
+     */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         greet();
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equals("bye")) {
+                goodbye();
+                break;
+            }
+            System.out.println(input);
+        }
     }
 }
