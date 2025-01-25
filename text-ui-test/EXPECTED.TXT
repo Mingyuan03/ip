@@ -1,7 +1,78 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+Hello! I'm SteadyBot
+What can I do for you?
+You should echo this back.
+____________________________________________________________
+Here are the tasks in your list:
+____________________________________________________________
+Got it. I've added this task:
+[D][ ] CS2103T (by: Friday, 4pm)
+Now you have 1 task in the list.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: Friday, 4pm)
+____________________________________________________________
+Got it. I've added this task:
+[E][ ] ST1131 (from: Thursday to: Sunday)
+Now you have 2 tasks in the list.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: Friday, 4pm)
+2.[E][ ] ST1131 (from: Thursday to: Sunday)
+____________________________________________________________
+Got it. I've added this task:
+[T][ ] Buy angbao for family
+Now you have 3 tasks in the list.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: Friday, 4pm)
+2.[E][ ] ST1131 (from: Thursday to: Sunday)
+3.[T][ ] Buy angbao for family
+____________________________________________________________
+Nice! I've marked this task as done:
+[D][X] CS2103T (by: Friday, 4pm)
+____________________________________________________________
+Nice! I've marked this task as done:
+[E][X] ST1131 (from: Thursday to: Sunday)
+____________________________________________________________
+Nice! I've marked this task as done:
+[T][X] Buy angbao for family
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][X] CS2103T (by: Friday, 4pm)
+2.[E][X] ST1131 (from: Thursday to: Sunday)
+3.[T][X] Buy angbao for family
+____________________________________________________________
+OK, I've marked this task as not done yet:
+[D][ ] CS2103T (by: Friday, 4pm)
+____________________________________________________________
+Oops! This task is already marked as done.
+____________________________________________________________
+Oops! This task is already marked as done.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: Friday, 4pm)
+2.[E][X] ST1131 (from: Thursday to: Sunday)
+3.[T][X] Buy angbao for family
+____________________________________________________________
+Oops! This task is already marked as undone.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: Friday, 4pm)
+2.[E][X] ST1131 (from: Thursday to: Sunday)
+3.[T][X] Buy angbao for family
+____________________________________________________________
+Nice! I've marked this task as done:
+[D][X] CS2103T (by: Friday, 4pm)
+____________________________________________________________
+Got it. I've added this task:
+[D][ ] CS2109S PS1 (by: 1 February)
+Now you have 4 tasks in the list.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][X] CS2103T (by: Friday, 4pm)
+2.[E][X] ST1131 (from: Thursday to: Sunday)
+3.[T][X] Buy angbao for family
+4.[D][ ] CS2109S PS1 (by: 1 February)
+____________________________________________________________
+Bye! Hope to see you again soon!
+____________________________________________________________

@@ -31,7 +31,7 @@ public class TaskLogs {
     public void addTask(Task task) {
         System.out.println("Got it. I've added this task:");
         this.taskLogs.add(task);
-        System.out.printf("[%c][ ] %s\n", task.getStatusIcon(), task.getDescription());
+        System.out.printf("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription());
         if (this.taskLogs.size() == 1) {
             System.out.println("Now you have 1 task in the list.");
         } else {

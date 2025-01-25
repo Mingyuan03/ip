@@ -1,0 +1,22 @@
+You should echo this back.
+list
+deadline CS2103T /by Friday, 4pm
+list
+event ST1131 /from Thursday /to Sunday
+list
+todo Buy angbao for family
+list
+mark 1
+mark 2
+mark 3
+list
+unmark 1
+mark 2
+mark 3
+list
+unmark 1
+list
+mark 1
+deadline CS2109S PS1 /by 1 February
+list
+bye
