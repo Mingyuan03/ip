@@ -14,17 +14,18 @@ MARK:<index>
 UNMARK:<index>
 FOR TASK SEARCH:
 FIND:<index>
+LIST:No requirements to this command
 FOR MISCELLANEOUS FUNCTIONALITIES:
 HELP:No requirements to this command
 BYE:No requirements to this command
 ____________________________________________________________
-Here are the tasks in your list:
+You have no tasks in your list.
 ____________________________________________________________
 Got it. I've added this task:
 [D][ ] CS2103T (by: Friday, 4pm)
 Now you have 1 task in the list.
 ____________________________________________________________
-Here are the tasks in your list:
+Here is the task in your list:
 1.[D][ ] CS2103T (by: Friday, 4pm)
 ____________________________________________________________
 Got it. I've added this task:
@@ -85,6 +86,25 @@ Here are the tasks in your list:
 1.[D][ ] CS2103T (by: Friday, 4pm)
 2.[T][X] Buy angbao for family
 ____________________________________________________________
+Here is the specific task 2 in your list:
+2.[T][X] Buy angbao for family
+____________________________________________________________
+Here is the specific task 1 in your list:
+1.[D][ ] CS2103T (by: Friday, 4pm)
+____________________________________________________________
+Noted. I've removed this task:
+[T][X] Buy angbao for family
+Now you have 1 task in the list.
+____________________________________________________________
+Here is the task in your list:
+1.[D][ ] CS2103T (by: Friday, 4pm)
+____________________________________________________________
+Noted. I've removed this task:
+[D][ ] CS2103T (by: Friday, 4pm)
+Now you have no tasks in the list.
+____________________________________________________________
+You have no tasks in your list.
+____________________________________________________________
 You sought help! As Dumbledore says, help will always be given to those who ask for it
 Valid commands alongside their formats are:
 FOR TASK INSERTION:
@@ -98,6 +118,7 @@ MARK:<index>
 UNMARK:<index>
 FOR TASK SEARCH:
 FIND:<index>
+LIST:No requirements to this command
 FOR MISCELLANEOUS FUNCTIONALITIES:
 HELP:No requirements to this command
 BYE:No requirements to this command

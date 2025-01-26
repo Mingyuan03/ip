@@ -6,6 +6,7 @@ public enum Help {
     MARK ("<index>"),
     UNMARK ("<index>"),
     FIND ("<index>"),
+    LIST,
     HELP,
     BYE;
 

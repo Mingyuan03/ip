@@ -45,12 +45,15 @@ public class TaskLogs {
         }
         System.out.println("Noted. I've removed this task:");
         Task task = this.getTask(index);
-        System.out.printf("[%c][%c] %s\n", task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+        System.out.printf("[%c][%c] %s\n",
+                task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
         this.taskLogs.remove(index - 1); // Implicitly shift all subsequent tasks forward
-        if (this.taskLogs.size() == 1) {
+        if (this.taskLogs.size() > 1) {
+            System.out.printf("Now you have %d tasks in the list.\n", this.getTaskCount());
+        } else if (this.taskLogs.size() == 1) {
             System.out.println("Now you have 1 task in the list.");
         } else {
-            System.out.printf("Now you have %d tasks in the list.\n", this.getTaskCount());
+            System.out.println("Now you have no tasks in the list.");
         }
     }
 
@@ -82,14 +85,28 @@ public class TaskLogs {
         System.out.printf("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription());
     }
 
+    public void printSingleTask(int index) {
+        Task task = this.getTask(index);
+        System.out.printf("Here is the specific task %d in your list:\n", index);
+        System.out.printf("%d.[%c][%c] %s\n",
+                index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+    }
+
     public void printTasks() {
-        System.out.println("Here are the tasks in your list:");
+        if (this.getTaskCount() > 1) {
+            System.out.println("Here are the tasks in your list:");
+        } else if (this.getTaskCount() == 1) {
+            System.out.println("Here is the task in your list:");
+        } else {
+            System.out.println("You have no tasks in your list.");
+            return;
+        }
         for (int index = 1; index <= this.getTaskCount(); index++) {
             Task task = this.getTask(index);
             char taskType = task.getTypeIcon();
             char crossIfDone = task.getStatusIcon();
-            System.out.printf("%d.[%c][%c] %s\n", index,
-                    taskType, crossIfDone, task.getDescription());
+            System.out.printf("%d.[%c][%c] %s\n",
+                    index, taskType, crossIfDone, task.getDescription());
         }
     }
 }

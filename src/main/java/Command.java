@@ -13,13 +13,15 @@ public enum Command {
         ToDo todo = new ToDo(input);
         taskLogs.addTask(todo);
     }),
-    LIST("list", (input, taskLogs) -> taskLogs.printTasks()),
+    DELETE("delete", (input, taskLogs) ->
+            taskLogs.deleteTask(Integer.parseInt(input.trim().split(" ")[0]))),
     MARK("mark", (input, taskLogs) ->
             taskLogs.markTask(Integer.parseInt(input.trim().split(" ")[0]))),
     UNMARK("unmark", (input, taskLogs) ->
             taskLogs.unmarkTask(Integer.parseInt(input.trim().split(" ")[0]))),
-    DELETE("delete", (input, taskLogs) ->
-            taskLogs.deleteTask(Integer.parseInt(input.trim().split(" ")[0]))),
+    FIND("find", (input, taskLogs) ->
+            taskLogs.printSingleTask(Integer.parseInt(input.trim().split(" ")[0]))),
+    LIST("list", (input, taskLogs) -> taskLogs.printTasks()),
     HELP("help", (input, taskLogs) -> {
         System.out.println("You sought help! "
                 + "As Dumbledore says, help will always be given to those who ask for it");
