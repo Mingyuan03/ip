@@ -39,6 +39,21 @@ public class TaskLogs {
         }
     }
 
+    public void deleteTask(int index) {
+        if (index < 1 || index > this.getTaskCount()) {
+            throw new IndexOutOfBoundsException("Index must be from 1 to " + this.getTaskCount());
+        }
+        System.out.println("Noted. I've removed this task:");
+        Task task = this.getTask(index);
+        System.out.printf("[%c][%c] %s\n", task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+        this.taskLogs.remove(index - 1); // Implicitly shift all subsequent tasks forward
+        if (this.taskLogs.size() == 1) {
+            System.out.println("Now you have 1 task in the list.");
+        } else {
+            System.out.printf("Now you have %d tasks in the list.\n", this.getTaskCount());
+        }
+    }
+
     /**
      * Toggle status of task in taskLogs field from Undone to Done.
      * @param index 1-indexed task location.

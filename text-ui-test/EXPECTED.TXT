@@ -1,6 +1,22 @@
 Hello! I'm SteadyBot
 What can I do for you?
-You should echo this back.
+____________________________________________________________
+You typed an invalid command!
+Valid commands alongside their formats are:
+FOR TASK INSERTION:
+DEADLINE:<description> /by <time>
+EVENT:description> /from <time> /to <time>
+TODO:<description>
+FOR TASK DELETION:
+DELETE:<index>
+FOR TASK ANNOTATION:
+MARK:<index>
+UNMARK:<index>
+FOR TASK SEARCH:
+FIND:<index>
+FOR MISCELLANEOUS FUNCTIONALITIES:
+HELP:No requirements to this command
+BYE:No requirements to this command
 ____________________________________________________________
 Here are the tasks in your list:
 ____________________________________________________________
@@ -61,18 +77,30 @@ Here are the tasks in your list:
 2.[E][X] ST1131 (from: Thursday to: Sunday)
 3.[T][X] Buy angbao for family
 ____________________________________________________________
-Nice! I've marked this task as done:
-[D][X] CS2103T (by: Friday, 4pm)
-____________________________________________________________
-Got it. I've added this task:
-[D][ ] CS2109S PS1 (by: 1 February)
-Now you have 4 tasks in the list.
+Noted. I've removed this task:
+[E][X] ST1131 (from: Thursday to: Sunday)
+Now you have 2 tasks in the list.
 ____________________________________________________________
 Here are the tasks in your list:
-1.[D][X] CS2103T (by: Friday, 4pm)
-2.[E][X] ST1131 (from: Thursday to: Sunday)
-3.[T][X] Buy angbao for family
-4.[D][ ] CS2109S PS1 (by: 1 February)
+1.[D][ ] CS2103T (by: Friday, 4pm)
+2.[T][X] Buy angbao for family
+____________________________________________________________
+You sought help! As Dumbledore says, help will always be given to those who ask for it
+Valid commands alongside their formats are:
+FOR TASK INSERTION:
+DEADLINE:<description> /by <time>
+EVENT:description> /from <time> /to <time>
+TODO:<description>
+FOR TASK DELETION:
+DELETE:<index>
+FOR TASK ANNOTATION:
+MARK:<index>
+UNMARK:<index>
+FOR TASK SEARCH:
+FIND:<index>
+FOR MISCELLANEOUS FUNCTIONALITIES:
+HELP:No requirements to this command
+BYE:No requirements to this command
 ____________________________________________________________
 Bye! Hope to see you again soon!
 ____________________________________________________________

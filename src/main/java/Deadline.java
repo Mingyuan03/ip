@@ -5,10 +5,13 @@ public class Deadline extends Task {
         int byIndex = deadlineString.indexOf(" /by ");
         if (byIndex == -1) {
             // Check existence of 1st instance of by as a separate word.
-            throw new IllegalArgumentException("Correct Format: <description> /by <time>");
+            throw new InvalidCommandException(Help.DEADLINE);
         }
-        super.description = deadlineString.substring(0, byIndex);
-        this.byTime = deadlineString.substring(byIndex + " /by ".length());
+        super.description = deadlineString.substring(0, byIndex).trim();
+        this.byTime = deadlineString.substring(byIndex + " /by ".length()).trim();
+        if (this.byTime.isEmpty() || super.description.trim().isEmpty()) {
+            throw new EmptyContentException();
+        }
     }
 
     @Override

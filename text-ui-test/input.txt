@@ -1,4 +1,4 @@
-You should echo this back.
+Test Invalid Command.
 list
 deadline CS2103T /by Friday, 4pm
 list
@@ -16,7 +16,7 @@ mark 3
 list
 unmark 1
 list
-mark 1
-deadline CS2109S PS1 /by 1 February
+delete 2
 list
+help
 bye
