@@ -1,6 +1,6 @@
 # Duke project template
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+This is a project template for a greenfield Java project. While it's initially named after the Java mascot _Duke_, the owner of this project has renamed it to _SteadyBot_, an ingenious twist to fit its primary purpose of helping aspiring students schedule their academic commitments while staying true to the local Singlish roots! Given below are instructions on how to use it.
 
 ## Setting up in Intellij
 
