@@ -22,85 +22,85 @@ ____________________________________________________________
 You have no tasks in your list.
 ____________________________________________________________
 Got it. I've added this task:
-[D][ ] CS2103T (by: Friday, 4pm)
+[D][ ] CS2103T (by: 2025-02-07T16:00)
 Now you have 1 task in the list.
 ____________________________________________________________
 Here is the task in your list:
-1.[D][ ] CS2103T (by: Friday, 4pm)
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 ____________________________________________________________
 Got it. I've added this task:
-[E][ ] ST1131 (from: Thursday to: Sunday)
+[E][ ] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 Now you have 2 tasks in the list.
 ____________________________________________________________
 Here are the tasks in your list:
-1.[D][ ] CS2103T (by: Friday, 4pm)
-2.[E][ ] ST1131 (from: Thursday to: Sunday)
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[E][ ] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 ____________________________________________________________
 Got it. I've added this task:
 [T][ ] Buy angbao for family
 Now you have 3 tasks in the list.
 ____________________________________________________________
 Here are the tasks in your list:
-1.[D][ ] CS2103T (by: Friday, 4pm)
-2.[E][ ] ST1131 (from: Thursday to: Sunday)
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[E][ ] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 3.[T][ ] Buy angbao for family
 ____________________________________________________________
 Nice! I've marked this task as done:
-[D][X] CS2103T (by: Friday, 4pm)
+[D][X] CS2103T (by: 2025-02-07T16:00)
 ____________________________________________________________
 Nice! I've marked this task as done:
-[E][X] ST1131 (from: Thursday to: Sunday)
+[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 ____________________________________________________________
 Nice! I've marked this task as done:
 [T][X] Buy angbao for family
 ____________________________________________________________
 Here are the tasks in your list:
-1.[D][X] CS2103T (by: Friday, 4pm)
-2.[E][X] ST1131 (from: Thursday to: Sunday)
+1.[D][X] CS2103T (by: 2025-02-07T16:00)
+2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 3.[T][X] Buy angbao for family
 ____________________________________________________________
 OK, I've marked this task as not done yet:
-[D][ ] CS2103T (by: Friday, 4pm)
+[D][ ] CS2103T (by: 2025-02-07T16:00)
 ____________________________________________________________
 Oops! This task is already marked as done.
 ____________________________________________________________
 Oops! This task is already marked as done.
 ____________________________________________________________
 Here are the tasks in your list:
-1.[D][ ] CS2103T (by: Friday, 4pm)
-2.[E][X] ST1131 (from: Thursday to: Sunday)
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 3.[T][X] Buy angbao for family
 ____________________________________________________________
 Oops! This task is already marked as undone.
 ____________________________________________________________
 Here are the tasks in your list:
-1.[D][ ] CS2103T (by: Friday, 4pm)
-2.[E][X] ST1131 (from: Thursday to: Sunday)
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 3.[T][X] Buy angbao for family
 ____________________________________________________________
 Noted. I've removed this task:
-[E][X] ST1131 (from: Thursday to: Sunday)
+[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 Now you have 2 tasks in the list.
 ____________________________________________________________
 Here are the tasks in your list:
-1.[D][ ] CS2103T (by: Friday, 4pm)
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 2.[T][X] Buy angbao for family
 ____________________________________________________________
 Here is the specific task 2 in your list:
 2.[T][X] Buy angbao for family
 ____________________________________________________________
 Here is the specific task 1 in your list:
-1.[D][ ] CS2103T (by: Friday, 4pm)
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 ____________________________________________________________
 Noted. I've removed this task:
 [T][X] Buy angbao for family
 Now you have 1 task in the list.
 ____________________________________________________________
 Here is the task in your list:
-1.[D][ ] CS2103T (by: Friday, 4pm)
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 ____________________________________________________________
 Noted. I've removed this task:
-[D][ ] CS2103T (by: Friday, 4pm)
+[D][ ] CS2103T (by: 2025-02-07T16:00)
 Now you have no tasks in the list.
 ____________________________________________________________
 You have no tasks in your list.
