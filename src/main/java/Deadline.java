@@ -1,5 +1,9 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.DateTimeException;
+
 public class Deadline extends Task {
-    private final String byTime;
+    private final LocalDateTime byTime;
 
     public static String getRawDescription(String deadlineDescription) {
         String[] descriptionTime = deadlineDescription.split(" \\(by: ");
@@ -15,10 +19,14 @@ public class Deadline extends Task {
             throw new InvalidCommandException(Help.DEADLINE);
         }
         super.description = deadlineString.substring(0, byIndex).trim();
-        this.byTime = deadlineString.substring(byIndex + " /by ".length()).trim();
-        if (this.byTime.isEmpty() || super.description.trim().isEmpty()) {
+        String byString = deadlineString.substring(byIndex + " /by ".length()).trim();
+        if (byString.isEmpty() || super.description.trim().isEmpty()) {
             throw new EmptyContentException();
         }
+        // Default byTime chosen as 23:59, the most common deadline in academic settings
+        this.byTime = DateTimeFormat.parseDateTime(byString).
+                or(() -> DateTimeFormat.parseDate(byString).map(date -> date.atTime(23, 59))).
+                orElseThrow(() -> new DateTimeException("Invalid datetime format"));
     }
 
     @Override

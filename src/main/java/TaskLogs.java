@@ -130,7 +130,6 @@ public class TaskLogs {
         char taskType = matcher.group(1).charAt(0);
         char statusIcon = matcher.group(2).charAt(0);
         String description = matcher.group(3).trim();
-        System.out.printf("Test:%c,%c,%s\n", taskType, statusIcon, description);
         Task newTask = switch (taskType) {
             case 'D' -> new Deadline(Deadline.getRawDescription(description));
             case 'E' -> new Event(Event.getRawDescription(description));

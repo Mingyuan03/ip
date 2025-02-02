@@ -1,6 +1,12 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.DateTimeException;
+
 public class Event extends Task {
-    private final String startTime;
-    private final String endTime;
+    private final LocalDateTime startTime;
+    private final LocalDateTime endTime;
+
+    // ISO 8601 Datetime Standard: yyyy-MM-dd HH:mm
 
     public static String getRawDescription(String eventDescription) {
         String[] descriptionTime = eventDescription.split(" \\(from: ");
@@ -17,11 +23,19 @@ public class Event extends Task {
             throw new InvalidCommandException(Help.EVENT);
         }
         super.description = eventString.substring(0, fromIndex).trim();
-        this.startTime = eventString.substring(fromIndex + " /from ".length(), toIndex).trim();
-        this.endTime = eventString.substring(toIndex + " /to ".length()).trim();
-        if (this.startTime.isEmpty() || this.endTime.isEmpty() || super.description.isEmpty()) {
+        String startString = eventString.substring(fromIndex + " /from ".length(), toIndex).trim();
+        String endString = eventString.substring(toIndex + " /to ".length()).trim();
+        if (startString.isEmpty() || endString.isEmpty() || super.description.isEmpty()) {
             throw new EmptyContentException();
         }
+        // Default startTime chosen as 00:00, the most common startTime in academic settings
+        this.startTime = DateTimeFormat.parseDateTime(startString).
+                or(() -> DateTimeFormat.parseDate(startString).map(LocalDate::atStartOfDay)).
+                orElseThrow(() -> new DateTimeException("Invalid datetime format"));
+        // Default endTime chosen as 23:59, the most common endTime in academic settings
+        this.endTime = DateTimeFormat.parseDateTime(endString).
+                or(() -> DateTimeFormat.parseDate(endString).map(date -> date.atTime(23, 59))).
+                orElseThrow(() -> new DateTimeException("Invalid datetime format"));
     }
 
     @Override

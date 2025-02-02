@@ -1,8 +1,8 @@
 Test Invalid Command.
 list
-deadline CS2103T /by Friday, 4pm
+deadline CS2103T /by 2025-02-07 16:00
 list
-event ST1131 /from Thursday /to Sunday
+event ST1131 /from Sunday, 2025-02-02 /to 2025/02/16
 list
 todo Buy angbao for family
 list
