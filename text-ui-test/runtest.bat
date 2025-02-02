@@ -12,7 +12,7 @@ IF ERRORLEVEL 1 (
     echo ********** BUILD FAILURE **********
     exit /b 1
 )
-REM no error here, errorlevel == 0
+REM no error here, ERRORLEVEL == 0
 
 REM run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
 REM Main file modified from Duke.java to SteadyBot.java, hence the name change below

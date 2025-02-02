@@ -2,6 +2,13 @@ public class Event extends Task {
     private final String startTime;
     private final String endTime;
 
+    public static String getRawDescription(String eventDescription) {
+        String[] descriptionTime = eventDescription.split(" \\(from: ");
+        String description = descriptionTime[0];
+        String[] times = descriptionTime[1].split(" to: ");
+        return description + " /from " + times[0] + " /to " + times[1];
+    }
+
     public Event(String eventString) {
         int fromIndex = eventString.indexOf(" /from ");
         int toIndex = eventString.indexOf(" /to ");
