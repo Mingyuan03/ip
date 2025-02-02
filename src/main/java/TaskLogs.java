@@ -1,6 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TaskLogs {
+    private static final Pattern CACHE_TASK_PATTERN = Pattern.compile("^\\[([DET])]\\[([X ])] (.+)$");
     private final ArrayList<Task> taskLogs;
 
     public TaskLogs() {
@@ -101,12 +106,66 @@ public class TaskLogs {
             System.out.println("You have no tasks in your list.");
             return;
         }
+        System.out.print(this);
+    }
+
+    /**
+     * Add lines parsed from cache as Task instances into TaskLogs collection.
+     * @param lines List of String data to be split into params for instantiating each Task.
+     */
+    public void fromLines(List<String> lines) {
+        this.taskLogs.clear();
+        for (String line : lines) {
+            Matcher matcher = CACHE_TASK_PATTERN.matcher(line);
+            if (!matcher.matches()) {
+                System.out.printf("Invalid log format: " + line);
+                continue;
+            }
+            Task newTask = getTask(matcher);
+            this.taskLogs.add(newTask);
+        }
+    }
+
+    private static Task getTask(Matcher matcher) {
+        char taskType = matcher.group(1).charAt(0);
+        char statusIcon = matcher.group(2).charAt(0);
+        String description = matcher.group(3).trim();
+        System.out.printf("Test:%c,%c,%s\n", taskType, statusIcon, description);
+        Task newTask = switch (taskType) {
+            case 'D' -> new Deadline(Deadline.getRawDescription(description));
+            case 'E' -> new Event(Event.getRawDescription(description));
+            case 'T' -> new ToDo(description);
+            default -> throw new IllegalStateException("Task type not in 'DET': " + taskType);
+        };
+        if (statusIcon == 'X') {
+            newTask.toggle();
+        }
+        return newTask;
+    }
+
+    /**
+     * Extract from Task instances in TaskLogs collection the Strings to update cache.
+     * @return List of String data to overwrite cache.
+     */
+    public List<String> toLines() {
+        ArrayList<String> cacheLines = new ArrayList<>();
+        for (Task task : this.taskLogs) {
+            cacheLines.add(String.format("[%c][%c] %s",
+                    task.getTypeIcon(), task.getStatusIcon(), task.getDescription()));
+        }
+        return cacheLines;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
         for (int index = 1; index <= this.getTaskCount(); index++) {
             Task task = this.getTask(index);
             char taskType = task.getTypeIcon();
             char crossIfDone = task.getStatusIcon();
-            System.out.printf("%d.[%c][%c] %s\n",
-                    index, taskType, crossIfDone, task.getDescription());
+            str.append(String.format("%d.[%c][%c] %s\n",
+                    index, taskType, crossIfDone, task.getDescription()));
         }
+        return str.toString();
     }
 }
