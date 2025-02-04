@@ -1,3 +1,5 @@
+package steadylah.datetime;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -5,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 import java.util.Optional;
 
-public enum DateTimeFormat {
+public enum Datetime {
     // Datetime formats below
     ISO8601("yyyy-MM-dd'T'HH:mm"), // hyphenated date
     SPACING("yyyy-MM-dd HH:mm"), // spacing logically implies format has time
@@ -26,12 +28,12 @@ public enum DateTimeFormat {
 
     private final DateTimeFormatter formatter;
 
-    DateTimeFormat(String pattern) {
+    Datetime(String pattern) {
         this.formatter = DateTimeFormatter.ofPattern(pattern);
     }
 
     public static Optional<LocalDateTime> parseDateTime(String timeString) {
-        for (DateTimeFormat format : new DateTimeFormat[] {ISO8601, SPACING, DATETIME_SLASH, DATETIME_TEXT,
+        for (Datetime format : new Datetime[] {ISO8601, SPACING, DATETIME_SLASH, DATETIME_TEXT,
                 DATETIME_TEXT_ABBREV, DATETIME_WEEKDAY, DATETIME_WEEKDAY_ABBREV, DATETIME_COMPACT}) {
             try {
                 return Optional.of(LocalDateTime.parse(timeString, format.formatter));
@@ -41,7 +43,7 @@ public enum DateTimeFormat {
     }
 
     public static Optional<LocalDate> parseDate(String timeString) {
-        for (DateTimeFormat format : new DateTimeFormat[] {ISO8601_DATE, DATE_SLASH, DATE_TEXT, DATE_TEXT_ABBREV,
+        for (Datetime format : new Datetime[] {ISO8601_DATE, DATE_SLASH, DATE_TEXT, DATE_TEXT_ABBREV,
                 DATE_WEEKDAY, DATE_WEEKDAY_ABBREV, DATE_COMPACT}) {
             try {
                 return Optional.of(LocalDate.parse(timeString, format.formatter));

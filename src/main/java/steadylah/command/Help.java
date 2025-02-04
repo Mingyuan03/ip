@@ -1,3 +1,5 @@
+package steadylah.command;
+
 public enum Help {
     DEADLINE ("<description> /by <time>"),
     EVENT ("description> /from <time> /to <time>"),

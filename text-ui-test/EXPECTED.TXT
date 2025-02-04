@@ -1,4 +1,4 @@
-Hello! I'm SteadyBot
+Hello! I'm SteadyLah, your personal study planner!
 What can I do for you?
 ____________________________________________________________
 You typed an invalid command!
