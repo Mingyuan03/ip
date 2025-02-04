@@ -13,7 +13,7 @@ FOR TASK ANNOTATION:
 MARK:<index>
 UNMARK:<index>
 FOR TASK SEARCH:
-FIND:<index>
+FIND:<keyword>
 LIST:No requirements to this command
 FOR MISCELLANEOUS FUNCTIONALITIES:
 HELP:No requirements to this command
@@ -86,10 +86,10 @@ Here are the tasks in your list:
 1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 2.[T][X] Buy angbao for family
 ____________________________________________________________
-Here is the specific task 2 in your list:
-2.[T][X] Buy angbao for family
+Here is the unique matching task in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 ____________________________________________________________
-Here is the specific task 1 in your list:
+Here is the unique matching task in your list:
 1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 ____________________________________________________________
 Noted. I've removed this task:
@@ -105,6 +105,8 @@ Now you have no tasks in the list.
 ____________________________________________________________
 You have no tasks in your list.
 ____________________________________________________________
+Oops! There are no matching tasks for keyword: 0
+____________________________________________________________
 You sought help! As Dumbledore says, help will always be given to those who ask for it
 Valid commands alongside their formats are:
 FOR TASK INSERTION:
@@ -117,7 +119,7 @@ FOR TASK ANNOTATION:
 MARK:<index>
 UNMARK:<index>
 FOR TASK SEARCH:
-FIND:<index>
+FIND:<keyword>
 LIST:No requirements to this command
 FOR MISCELLANEOUS FUNCTIONALITIES:
 HELP:No requirements to this command

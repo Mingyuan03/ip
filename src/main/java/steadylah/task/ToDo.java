@@ -1,12 +1,12 @@
 package steadylah.task;
 
-import steadylah.exception.EmptyContentException;
+import steadylah.exception.EmptyDescriptionException;
 
 public class ToDo extends Task {
     public ToDo(String toDoString) {
         super.description = toDoString.trim();
         if (super.description.isEmpty()) {
-            throw new EmptyContentException();
+            throw new EmptyDescriptionException();
         }
     }
 

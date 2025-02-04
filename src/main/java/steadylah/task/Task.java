@@ -10,6 +10,10 @@ public abstract class Task {
         return this.description;
     }
 
+    public boolean isFoundKeyword(String keyword) {
+        return this.description.toLowerCase().contains(keyword.toLowerCase());
+    }
+
     public boolean isDone() {
         return this.isDone;
     }

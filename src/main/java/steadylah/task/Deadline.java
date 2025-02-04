@@ -2,7 +2,8 @@ package steadylah.task;
 
 import steadylah.datetime.Datetime;
 import steadylah.command.Help;
-import steadylah.exception.EmptyContentException;
+import steadylah.exception.EmptyDescriptionException;
+import steadylah.exception.EmptyTimeException;
 import steadylah.exception.InvalidCommandException;
 
 import java.time.LocalDateTime;
@@ -26,8 +27,10 @@ public class Deadline extends Task {
         }
         super.description = deadlineString.substring(0, byIndex).trim();
         String byString = deadlineString.substring(byIndex + " /by ".length()).trim();
-        if (byString.isEmpty() || super.description.trim().isEmpty()) {
-            throw new EmptyContentException();
+        if (super.description.trim().isEmpty()) {
+            throw new EmptyDescriptionException();
+        } else if (byString.isEmpty()) {
+            throw new EmptyTimeException();
         }
         // Default byTime chosen as 23:59, the most common deadline in academic settings
         this.byTime = Datetime.parseDateTime(byString).

@@ -1,6 +1,10 @@
 package steadylah.task;
 
+import steadylah.exception.EmptyKeywordException;
+import steadylah.exception.EmptyTaskListException;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import java.util.regex.Matcher;
@@ -47,7 +51,9 @@ public class TaskList {
     }
 
     public void deleteTask(int index) {
-        if (index < 1 || index > this.getTaskCount()) {
+        if (this.taskLogs.isEmpty()) {
+            throw new EmptyTaskListException();
+        } else if (index < 1 || index > this.getTaskCount()) {
             throw new IndexOutOfBoundsException("Index must be from 1 to " + this.getTaskCount());
         }
         System.out.println("Noted. I've removed this task:");
@@ -69,6 +75,9 @@ public class TaskList {
      * @param index 1-indexed task location.
      */
     public void markTask(int index) {
+        if (this.taskLogs.isEmpty()) {
+            throw new EmptyTaskListException();
+        }
         Task task = this.getTask(index);
         if (task.isDone()) {
             System.out.println("Oops! This task is already marked as done.");return;
@@ -83,6 +92,9 @@ public class TaskList {
      * @param index 1-index task location.
      */
     public void unmarkTask(int index) {
+        if (this.taskLogs.isEmpty()) {
+            throw new EmptyTaskListException();
+        }
         Task task = this.getTask(index);
         if (!task.isDone()) {
             System.out.println("Oops! This task is already marked as undone.");return;
@@ -92,11 +104,29 @@ public class TaskList {
         System.out.printf("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription());
     }
 
-    public void printSingleTask(int index) {
-        Task task = this.getTask(index);
-        System.out.printf("Here is the specific task %d in your list:\n", index);
-        System.out.printf("%d.[%c][%c] %s\n",
-                index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+    public void printRelevantTasks(String keyword) {
+        if (keyword.isEmpty()) {
+            throw new EmptyKeywordException();
+        }
+        HashSet<Integer> matchingTaskIndices = new HashSet<>();
+        for (int index = 1; index < this.getTaskCount(); index++) {
+            Task task = this.getTask(index);
+            if (task.isFoundKeyword(keyword)) {
+                matchingTaskIndices.add(index);
+            }
+        }
+        if (matchingTaskIndices.isEmpty()) {
+            System.out.println("Oops! There are no matching tasks for keyword: " + keyword);
+        } else if (matchingTaskIndices.size() == 1) {
+            System.out.println("Here is the unique matching task in your list:");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+        }
+        for (Integer index : matchingTaskIndices) {
+            Task task = this.getTask(index);
+            System.out.printf("%d.[%c][%c] %s\n",
+                    index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+        }
     }
 
     public void printTasks() {
@@ -123,7 +153,7 @@ public class TaskList {
                 System.out.printf("Invalid log format: " + line);
                 continue;
             }
-            Task newTask = this.getTask(matcher);
+            Task newTask = TaskList.getTask(matcher);
             this.taskLogs.add(newTask);
         }
     }

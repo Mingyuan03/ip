@@ -21,8 +21,12 @@ public class SteadyLah {
                 this.storage.saveToCache(this.taskList);
                 break;
             }
-            Command command = CommandParser.parseCommand(rawInput);
-            command.execute(this.taskList, this.ui, this.storage);
+            try {
+                Command command = CommandParser.parseCommand(rawInput);
+                command.execute(this.taskList, this.ui, this.storage);
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
             this.ui.printDelimiter();
         }
     }

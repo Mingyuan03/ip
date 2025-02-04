@@ -7,6 +7,6 @@ public class InvalidCommandException extends RuntimeException {
         super("You typed an invalid command!\n" + Help.getFullHelp());
     }
     public InvalidCommandException(Help help) {
-        super(help.getSpecificHelp());
+        super("You typed an invalid command for " + help + ". It should be:" + help.getSpecificHelp());
     }
 }

@@ -10,6 +10,6 @@ public class FindCommand extends Command {
     }
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) {
-        taskList.printSingleTask(Integer.parseInt(this.contentInput.trim().split(" ")[0]));
+        taskList.printRelevantTasks(this.contentInput);
     }
 }

@@ -2,7 +2,8 @@ package steadylah.task;
 
 import steadylah.datetime.Datetime;
 import steadylah.command.Help;
-import steadylah.exception.EmptyContentException;
+import steadylah.exception.EmptyDescriptionException;
+import steadylah.exception.EmptyTimeException;
 import steadylah.exception.InvalidCommandException;
 
 import java.time.LocalDate;
@@ -34,8 +35,10 @@ public class Event extends Task {
         super.description = eventString.substring(0, fromIndex).trim();
         String startString = eventString.substring(fromIndex + " /from ".length(), toIndex).trim();
         String endString = eventString.substring(toIndex + " /to ".length()).trim();
-        if (startString.isEmpty() || endString.isEmpty() || super.description.isEmpty()) {
-            throw new EmptyContentException();
+        if (super.description.isEmpty()) {
+            throw new EmptyDescriptionException();
+        } else if (startString.isEmpty() || endString.isEmpty()) {
+            throw new EmptyTimeException();
         }
         // Default startTime chosen as 00:00, the most common startTime in academic settings
         this.startTime = Datetime.parseDateTime(startString).
