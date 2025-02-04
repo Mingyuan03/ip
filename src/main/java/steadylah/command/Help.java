@@ -7,7 +7,7 @@ public enum Help {
     DELETE ("<index>"),
     MARK ("<index>"),
     UNMARK ("<index>"),
-    FIND ("<index>"),
+    FIND ("<keyword>"),
     LIST,
     HELP,
     BYE;

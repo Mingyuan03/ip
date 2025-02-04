@@ -24,5 +24,6 @@ delete 2
 list
 delete 1
 list
+find 0
 help
 bye
