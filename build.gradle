@@ -1,14 +1,36 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'checkstyle'
+    id 'com.github.johnrengelman.shadow' version '7.1.2' // fat/uber JAR
+}
+
+checkstyle {
+    toolVersion = '10.2'
+    configDirectory.set(file("$projectDir/config/checkstyle"))
 }
 
 repositories {
     mavenCentral()
+    maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
 }
 
 dependencies {
+    String javaFxVersion = '17.0.7'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'linux'
+
+    implementation group: 'com.joestelmach', name: 'natty', version: '0.13' // no version 1.13
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
 }
@@ -28,11 +50,12 @@ test {
 }
 
 application {
-    mainClass.set("seedu.duke.Duke")
+    mainClass.set("steadylah.SteadyLah") // Modified from initial "seedu.duke.Main"
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveFileName = "steadylah.jar"
+    archiveBaseName = "steadylah"
     archiveClassifier = null
 }
 

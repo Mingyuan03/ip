@@ -4,6 +4,9 @@ import steadylah.storage.Storage;
 import steadylah.task.TaskList;
 import steadylah.ui.Ui;
 
+/**
+ * @author Lu Mingyuan
+ */
 public abstract class Command {
     protected String contentInput;
 
