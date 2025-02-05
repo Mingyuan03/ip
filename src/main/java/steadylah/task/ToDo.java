@@ -2,7 +2,15 @@ package steadylah.task;
 
 import steadylah.exception.EmptyDescriptionException;
 
+/**
+ * @author Lu Mingyuan
+ * @version v1.0.0-alpha
+ */
 public class ToDo extends Task {
+    /**
+     * Instantiate a ToDo object.
+     * @param toDoString raw end-user String input comprising description only.
+     */
     public ToDo(String toDoString) {
         super.description = toDoString.trim();
         if (super.description.isEmpty()) {

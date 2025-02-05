@@ -1,15 +1,18 @@
 package steadylah.task;
 
-import steadylah.exception.EmptyKeywordException;
-import steadylah.exception.EmptyTaskListException;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import steadylah.exception.EmptyKeywordException;
+import steadylah.exception.EmptyTaskListException;
+
+/**
+ * @author Lu Mingyuan
+ * @version v1.0.0-alpha
+ */
 public class TaskList {
     private static final Pattern CACHE_TASK_PATTERN = Pattern.compile("^\\[([DET])]\\[([X ])] (.+)$");
     private final ArrayList<Task> taskLogs;
@@ -36,7 +39,7 @@ public class TaskList {
     }
 
     /**
-     * Append task to tail of taskLogs field.
+     * Append task to tail of taskList.
      * @param task New task.
      */
     public void addTask(Task task) {
@@ -50,6 +53,10 @@ public class TaskList {
         }
     }
 
+    /**
+     * Remove the task at location index from taskList.
+     * @param index 1-indexed task location.
+     */
     public void deleteTask(int index) {
         if (this.taskLogs.isEmpty()) {
             throw new EmptyTaskListException();
@@ -71,7 +78,7 @@ public class TaskList {
     }
 
     /**
-     * Toggle status of task in taskLogs field from Undone to Done.
+     * Toggle status of task in taskList field from Undone to Done.
      * @param index 1-indexed task location.
      */
     public void markTask(int index) {
@@ -80,15 +87,18 @@ public class TaskList {
         }
         Task task = this.getTask(index);
         if (task.isDone()) {
-            System.out.println("Oops! This task is already marked as done.");return;
+            System.out.println("Oops! This task is already marked as done.");
+        } else {
+            System.out.println("Nice! I've marked this task as done:");
+            task.toggle();
+            System.out.printf("[%c][X] %s\n", task.getTypeIcon(), task.getDescription());
         }
-        System.out.println("Nice! I've marked this task as done:");
-        task.toggle();
-        System.out.printf("[%c][X] %s\n", task.getTypeIcon(), task.getDescription());
     }
 
     /**
-     * Re-toggle status of task in taskLogs field from Done to Undone, possibly due to human error.
+     * Re-toggle status of task in taskList field from Done to Undone, possibly due to human error.
+     * The author envisages expanding on its functionality with a gentle reminder on the counterintuitive
+     * nature of unmarking a Done task.
      * @param index 1-index task location.
      */
     public void unmarkTask(int index) {
@@ -97,19 +107,40 @@ public class TaskList {
         }
         Task task = this.getTask(index);
         if (!task.isDone()) {
-            System.out.println("Oops! This task is already marked as undone.");return;
+            System.out.println("Oops! This task is already marked as undone.");
+        } else {
+            System.out.println("OK, I've marked this task as not done yet:");
+            task.toggle();
+            System.out.printf("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription());
         }
-        System.out.println("OK, I've marked this task as not done yet:");
-        task.toggle();
-        System.out.printf("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription());
     }
 
+    /**
+     * Print to console the index, task type, task status and content of the task at index location in taskList.
+     * @param index 1-indexed task location.
+     */
+    public void printSingleTask(int index) {
+        if (this.taskLogs.isEmpty()) {
+            throw new EmptyTaskListException();
+        }
+        Task task = this.getTask(index);
+        System.out.println("Here is the task in your list:");
+        System.out.printf("%d.[%c][%c] %s\n",
+                index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+    }
+
+    /**
+     * Print to console the index, task type, task status and content of all task(s) containing the keyword in content.
+     * It is a deliberate designer choice to not search by whole keyword, since search functions in real-life products
+     * default to having this level of flexibility.
+     * @param keyword character sequence of consecutive alphabets to search by.
+     */
     public void printRelevantTasks(String keyword) {
         if (keyword.isEmpty()) {
             throw new EmptyKeywordException();
         }
         HashSet<Integer> matchingTaskIndices = new HashSet<>();
-        for (int index = 1; index < this.getTaskCount(); index++) {
+        for (int index = 1; index <= this.getTaskCount(); index++) {
             Task task = this.getTask(index);
             if (task.isFoundKeyword(keyword)) {
                 matchingTaskIndices.add(index);
@@ -129,6 +160,9 @@ public class TaskList {
         }
     }
 
+    /**
+     * Print index, task type, task status and content of all tasks present in taskList in insertion order sequentially.
+     */
     public void printTasks() {
         if (this.getTaskCount() > 1) {
             System.out.println("Here are the tasks in your list:");
@@ -153,20 +187,20 @@ public class TaskList {
                 System.out.printf("Invalid log format: " + line);
                 continue;
             }
-            Task newTask = TaskList.getTask(matcher);
+            Task newTask = TaskList.getMatch(matcher);
             this.taskLogs.add(newTask);
         }
     }
 
-    private static Task getTask(Matcher matcher) {
+    private static Task getMatch(Matcher matcher) {
         char taskType = matcher.group(1).charAt(0);
         char statusIcon = matcher.group(2).charAt(0);
         String description = matcher.group(3).trim();
         Task newTask = switch (taskType) {
-            case 'D' -> new Deadline(Deadline.getRawDescription(description));
-            case 'E' -> new Event(Event.getRawDescription(description));
-            case 'T' -> new ToDo(description);
-            default -> throw new IllegalStateException("Task type not in 'DET': " + taskType);
+        case 'D' -> new Deadline(Deadline.getRawDescription(description));
+        case 'E' -> new Event(Event.getRawDescription(description));
+        case 'T' -> new ToDo(description);
+        default -> throw new IllegalStateException("Task type not in 'DET': " + taskType);
         };
         if (statusIcon == 'X') {
             newTask.toggle();

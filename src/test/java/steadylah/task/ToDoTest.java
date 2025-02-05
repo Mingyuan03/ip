@@ -1,13 +1,14 @@
 package steadylah.task;
 
-import steadylah.exception.EmptyDescriptionException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import steadylah.exception.EmptyDescriptionException;
 
 public class ToDoTest {
     @Test
-    public void constructor_emptyDescription_throwsEmptyDescriptionException() {
+    public void constructorEmptyDescriptionThrowsEmptyDescriptionException() {
         assertThrows(EmptyDescriptionException.class, () -> new ToDo(" \t\n "));
     }
 }

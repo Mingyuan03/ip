@@ -1,5 +1,9 @@
 package steadylah.task;
 
+/**
+ * @author Lu Mingyuan
+ * @version v1.0.0-alpha
+ */
 public abstract class Task {
     protected String description; // protected so that it's accessible in subclasses only.
     private boolean isDone; // protected so that it's accessible in subclasses only.
@@ -22,7 +26,7 @@ public abstract class Task {
         this.isDone = !this.isDone;
     }
 
-    abstract public char getTypeIcon();
+    public abstract char getTypeIcon();
 
     public char getStatusIcon() {
         return this.isDone ? 'X' : ' ';

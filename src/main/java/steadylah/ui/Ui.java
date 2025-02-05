@@ -2,6 +2,10 @@ package steadylah.ui;
 
 import java.util.Scanner;
 
+/**
+ * @author Lu Mingyuan
+ * @version v1.0.0-alpha
+ */
 public class Ui {
     private static final String NAME = "SteadyLah";
     private static final String GREETING = "Hello! I'm " + NAME + ", your personal study planner!\n"
@@ -12,11 +16,18 @@ public class Ui {
     // Scanner is best instantiated. Direct initialisation below omits class constructor solely for it.
     private final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Print to console custom greeting message at the start of execution of task scheduler.
+     */
     public void printGreeting() {
         System.out.println(GREETING);
         System.out.println(DELIMITER);
     }
 
+    /**
+     * Print to console custom goodbye message at the end of normal termination of task scheduler.
+     * It is a designer choice that abnormal termination doesn't call this method.
+     */
     public void printGoodbye() {
         System.out.println(GOODBYE);
         System.out.println(DELIMITER);

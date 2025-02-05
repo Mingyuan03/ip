@@ -1,24 +1,25 @@
 package steadylah.task;
 
-import steadylah.datetime.Datetime;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+
 import steadylah.command.Help;
+import steadylah.datetime.Datetime;
 import steadylah.exception.EmptyDescriptionException;
 import steadylah.exception.EmptyTimeException;
 import steadylah.exception.InvalidCommandException;
 
-import java.time.LocalDateTime;
-import java.time.DateTimeException;
-
+/**
+ * @author Lu Mingyuan
+ * @version v1.0.0-alpha
+ */
 public class Deadline extends Task {
     private final LocalDateTime byTime;
 
-    public static String getRawDescription(String deadlineDescription) {
-        String[] descriptionTime = deadlineDescription.split(" \\(by: ");
-        String description = descriptionTime[0];
-        String byTime = descriptionTime[1].substring(0, descriptionTime[1].length() - 1);
-        return description + " /by " + byTime;
-    }
-
+    /**
+     * Instantiate a Deadline object.
+     * @param deadlineString raw end-user String input comprising description and byTime.
+     */
     public Deadline(String deadlineString) {
         int byIndex = deadlineString.indexOf(" /by ");
         if (byIndex == -1) {
@@ -33,9 +34,16 @@ public class Deadline extends Task {
             throw new EmptyTimeException();
         }
         // Default byTime chosen as 23:59, the most common deadline in academic settings
-        this.byTime = Datetime.parseDateTime(byString).
-                or(() -> Datetime.parseDate(byString).map(date -> date.atTime(23, 59))).
-                orElseThrow(() -> new DateTimeException("Invalid datetime format"));
+        this.byTime = Datetime.parseDateTime(byString)
+                .or(() -> Datetime.parseDate(byString).map(date -> date.atTime(23, 59)))
+                .orElseThrow(() -> new DateTimeException("Invalid datetime format"));
+    }
+
+    public static String getRawDescription(String deadlineDescription) {
+        String[] descriptionTime = deadlineDescription.split(" \\(by: ");
+        String description = descriptionTime[0];
+        String byTime = descriptionTime[1].substring(0, descriptionTime[1].length() - 1);
+        return description + " /by " + byTime;
     }
 
     @Override

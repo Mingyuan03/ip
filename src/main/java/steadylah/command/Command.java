@@ -6,6 +6,7 @@ import steadylah.ui.Ui;
 
 /**
  * @author Lu Mingyuan
+ * @version v1.0.0-alpha
  */
 public abstract class Command {
     protected String contentInput;

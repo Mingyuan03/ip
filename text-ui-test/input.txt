@@ -4,7 +4,7 @@ deadline CS2103T /by 2025-02-07 16:00
 list
 event ST1131 /from Sunday, 2025-02-02 /to 2025/02/16
 list
-todo Buy angbao for family
+todo Visit cousins in Taiwan
 list
 mark 1
 mark 2
@@ -18,8 +18,8 @@ unmark 1
 list
 delete 2
 list
-find 2
-find 1
+find T
+find_index 1
 delete 2
 list
 delete 1

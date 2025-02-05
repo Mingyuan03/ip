@@ -12,8 +12,10 @@ DELETE:<index>
 FOR TASK ANNOTATION:
 MARK:<index>
 UNMARK:<index>
-FOR TASK SEARCH:
+FOR TASK SEARCH BY KEYWORD:
 FIND:<keyword>
+FOR TASK SEARCH BY INDEX:
+FIND_INDEX:<index>
 LIST:No requirements to this command
 FOR MISCELLANEOUS FUNCTIONALITIES:
 HELP:No requirements to this command
@@ -37,13 +39,13 @@ Here are the tasks in your list:
 2.[E][ ] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 ____________________________________________________________
 Got it. I've added this task:
-[T][ ] Buy angbao for family
+[T][ ] Visit cousins in Taiwan
 Now you have 3 tasks in the list.
 ____________________________________________________________
 Here are the tasks in your list:
 1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 2.[E][ ] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
-3.[T][ ] Buy angbao for family
+3.[T][ ] Visit cousins in Taiwan
 ____________________________________________________________
 Nice! I've marked this task as done:
 [D][X] CS2103T (by: 2025-02-07T16:00)
@@ -52,12 +54,12 @@ Nice! I've marked this task as done:
 [E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
 ____________________________________________________________
 Nice! I've marked this task as done:
-[T][X] Buy angbao for family
+[T][X] Visit cousins in Taiwan
 ____________________________________________________________
 Here are the tasks in your list:
 1.[D][X] CS2103T (by: 2025-02-07T16:00)
 2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
-3.[T][X] Buy angbao for family
+3.[T][X] Visit cousins in Taiwan
 ____________________________________________________________
 OK, I've marked this task as not done yet:
 [D][ ] CS2103T (by: 2025-02-07T16:00)
@@ -69,14 +71,14 @@ ____________________________________________________________
 Here are the tasks in your list:
 1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
-3.[T][X] Buy angbao for family
+3.[T][X] Visit cousins in Taiwan
 ____________________________________________________________
 Oops! This task is already marked as undone.
 ____________________________________________________________
 Here are the tasks in your list:
 1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
-3.[T][X] Buy angbao for family
+3.[T][X] Visit cousins in Taiwan
 ____________________________________________________________
 Noted. I've removed this task:
 [E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
@@ -84,16 +86,17 @@ Now you have 2 tasks in the list.
 ____________________________________________________________
 Here are the tasks in your list:
 1.[D][ ] CS2103T (by: 2025-02-07T16:00)
-2.[T][X] Buy angbao for family
+2.[T][X] Visit cousins in Taiwan
 ____________________________________________________________
-Here is the unique matching task in your list:
+Here are the matching tasks in your list:
 1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[T][X] Visit cousins in Taiwan
 ____________________________________________________________
-Here is the unique matching task in your list:
+Here is the task in your list:
 1.[D][ ] CS2103T (by: 2025-02-07T16:00)
 ____________________________________________________________
 Noted. I've removed this task:
-[T][X] Buy angbao for family
+[T][X] Visit cousins in Taiwan
 Now you have 1 task in the list.
 ____________________________________________________________
 Here is the task in your list:
@@ -118,8 +121,10 @@ DELETE:<index>
 FOR TASK ANNOTATION:
 MARK:<index>
 UNMARK:<index>
-FOR TASK SEARCH:
+FOR TASK SEARCH BY KEYWORD:
 FIND:<keyword>
+FOR TASK SEARCH BY INDEX:
+FIND_INDEX:<index>
 LIST:No requirements to this command
 FOR MISCELLANEOUS FUNCTIONALITIES:
 HELP:No requirements to this command

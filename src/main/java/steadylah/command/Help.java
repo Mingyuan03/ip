@@ -1,13 +1,18 @@
 package steadylah.command;
 
+/**
+ * @author Lu Mingyuan
+ * @version v1.0.0-alpha
+ */
 public enum Help {
-    DEADLINE ("<description> /by <time>"),
-    EVENT ("description> /from <time> /to <time>"),
-    TODO ("<description>"),
-    DELETE ("<index>"),
-    MARK ("<index>"),
-    UNMARK ("<index>"),
-    FIND ("<keyword>"),
+    DEADLINE("<description> /by <time>"),
+    EVENT("description> /from <time> /to <time>"),
+    TODO("<description>"),
+    DELETE("<index>"),
+    MARK("<index>"),
+    UNMARK("<index>"),
+    FIND("<keyword>"),
+    FIND_INDEX("<index>"),
     LIST,
     HELP,
     BYE;
@@ -36,7 +41,9 @@ public enum Help {
             } else if (help.equals(MARK)) {
                 fullHelp.append("FOR TASK ANNOTATION:\n");
             } else if (help.equals(FIND)) {
-                fullHelp.append("FOR TASK SEARCH:\n");
+                fullHelp.append("FOR TASK SEARCH BY KEYWORD:\n");
+            } else if (help.equals(FIND_INDEX)) {
+                fullHelp.append("FOR TASK SEARCH BY INDEX:\n");
             } else if (help.equals(HELP)) {
                 fullHelp.append("FOR MISCELLANEOUS FUNCTIONALITIES:\n");
             }
