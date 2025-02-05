@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # SteadyLah project template
 
 This is a project template for a greenfield Java project. While it's initially named after the Java mascot _Duke_, the owner of this project has renamed it to _SteadyLah_, an ingenious twist to fit its primary purpose of helping aspiring students schedule their academic commitments while staying true to the local Singlish roots and casual enough to reassure kanchiong students! Given below are instructions on how to use it. They have been kept intact since before the 1st revision for its basic importance (and aesthetic purpose - Don't you find the Duke logo kinda cool?)!
+=======
+# steadylah.steadylah project template
+
+This is a project template for a greenfield Java project. While it's initially named after the Java mascot _Duke_, the owner of this project has renamed it to _SteadyBot_, an ingenious twist to fit its primary purpose of helping aspiring students schedule their academic commitments while staying true to the local Singlish roots! Given below are instructions on how to use it.
+>>>>>>> parent of 8676bc9 (Revert "Merge branch 'master' into add-gradle-support")
 
 ## Setting up in Intellij
 
