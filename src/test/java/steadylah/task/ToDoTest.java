@@ -8,7 +8,7 @@ import steadylah.exception.EmptyDescriptionException;
 
 public class ToDoTest {
     @Test
-    public void constructorEmptyDescriptionThrowsEmptyDescriptionException() {
+    public void constructor_emptyDescription_throwsEmptyDescriptionException() {
         assertThrows(EmptyDescriptionException.class, () -> new ToDo(" \t\n "));
     }
 }
