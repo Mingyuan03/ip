@@ -192,6 +192,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Auxiliary (helper) utility split from TaskList::fromLines in line with Single Responsibility Principle (SRP).
+     * @param matcher Encapsulation of intended Task components after passing it through implicit predicate.
+     * @return Processed Task to load from cache.
+     */
     private static Task getMatch(Matcher matcher) {
         char taskType = matcher.group(1).charAt(0);
         char statusIcon = matcher.group(2).charAt(0);
