@@ -18,9 +18,9 @@ public class HelpCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
-        System.out.println("You sought help! "
-                + "As Dumbledore says, help will always be given to those who ask for it");
-        System.out.println(Help.getFullHelp());
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        return "You sought help! "
+                + "As Dumbledore says, help will always be given to those who ask for it\n" +
+                Help.getFullHelp();
     }
 }

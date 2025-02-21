@@ -1,6 +1,7 @@
 package steadylah.task;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -42,57 +43,66 @@ public class TaskList {
      * Append task to tail of taskList.
      * @param task New task.
      */
-    public void addTask(Task task) {
-        System.out.println("Got it. I've added this task:");
+    public String addTask(Task task) {
+        StringBuilder addResponse = new StringBuilder();
+        addResponse.append("Got it. I've added this task:");
         this.taskLogs.add(task);
-        System.out.printf("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription());
+        addResponse.append(new Formatter().format("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription()).toString());
         if (this.taskLogs.size() == 1) {
-            System.out.println("Now you have 1 task in the list.");
+            addResponse.append("Now you have 1 task in the list.");
         } else {
-            System.out.printf("Now you have %d tasks in the list.\n", this.getTaskCount());
+            addResponse.append(new Formatter().format(
+                    "Now you have %d tasks in the list.\n", this.getTaskCount()).toString());
         }
+        return addResponse.toString();
     }
 
     /**
      * Remove the task at location index from taskList.
      * @param index 1-indexed task location.
      */
-    public void deleteTask(int index) {
+    public String deleteTask(int index) {
+        StringBuilder deleteResponse = new StringBuilder();
         if (this.taskLogs.isEmpty()) {
             throw new EmptyTaskListException();
         } else if (index < 1 || index > this.getTaskCount()) {
             throw new IndexOutOfBoundsException("Index must be from 1 to " + this.getTaskCount());
         }
-        System.out.println("Noted. I've removed this task:");
+        deleteResponse.append("Noted. I've removed this task:");
         Task task = this.getTask(index);
-        System.out.printf("[%c][%c] %s\n",
-                task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+        deleteResponse.append(new Formatter().format(
+                "[%c][%c] %s\n", task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
         this.taskLogs.remove(index - 1); // Implicitly shift all subsequent tasks forward
         if (this.taskLogs.size() > 1) {
-            System.out.printf("Now you have %d tasks in the list.\n", this.getTaskCount());
+            deleteResponse.append(new Formatter().format(
+                    "Now you have %d tasks in the list.\n", this.getTaskCount()).toString());
         } else if (this.taskLogs.size() == 1) {
-            System.out.println("Now you have 1 task in the list.");
+            deleteResponse.append("Now you have 1 task in the list.");
         } else {
-            System.out.println("Now you have no tasks in the list.");
+            deleteResponse.append("Now you have no tasks in the list.");
         }
+        return deleteResponse.toString();
     }
 
     /**
      * Toggle status of task in taskList field from Undone to Done.
      * @param index 1-indexed task location.
      */
-    public void markTask(int index) {
+    public String markTask(int index) {
+        StringBuilder markResponse = new StringBuilder();
         if (this.taskLogs.isEmpty()) {
             throw new EmptyTaskListException();
         }
         Task task = this.getTask(index);
         if (task.isDone()) {
-            System.out.println("Oops! This task is already marked as done.");
+            markResponse.append("Oops! This task is already marked as done.");
         } else {
-            System.out.println("Nice! I've marked this task as done:");
+            markResponse.append("Nice! I've marked this task as done:");
             task.toggle();
-            System.out.printf("[%c][X] %s\n", task.getTypeIcon(), task.getDescription());
+            markResponse.append(new Formatter().format(
+                    "[%c][X] %s\n", task.getTypeIcon(), task.getDescription()).toString());
         }
+        return markResponse.toString();
     }
 
     /**
@@ -101,32 +111,37 @@ public class TaskList {
      * nature of unmarking a Done task.
      * @param index 1-index task location.
      */
-    public void unmarkTask(int index) {
+    public String unmarkTask(int index) {
+        StringBuilder unmarkResponse = new StringBuilder();
         if (this.taskLogs.isEmpty()) {
             throw new EmptyTaskListException();
         }
         Task task = this.getTask(index);
         if (!task.isDone()) {
-            System.out.println("Oops! This task is already marked as undone.");
+            unmarkResponse.append("Oops! This task is already marked as undone.");
         } else {
-            System.out.println("OK, I've marked this task as not done yet:");
+            unmarkResponse.append("OK, I've marked this task as not done yet:");
             task.toggle();
-            System.out.printf("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription());
+            unmarkResponse.append(new Formatter().format(
+                    "[%c][ ] %s\n", task.getTypeIcon(), task.getDescription()).toString());
         }
+        return unmarkResponse.toString();
     }
 
     /**
      * Print to console the index, task type, task status and content of the task at index location in taskList.
      * @param index 1-indexed task location.
      */
-    public void printSingleTask(int index) {
+    public String printSingleTask(int index) {
+        StringBuilder printSingleResponse = new StringBuilder();
         if (this.taskLogs.isEmpty()) {
             throw new EmptyTaskListException();
         }
         Task task = this.getTask(index);
-        System.out.println("Here is the task in your list:");
-        System.out.printf("%d.[%c][%c] %s\n",
-                index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+        printSingleResponse.append("Here is the task in your list:");
+        printSingleResponse.append(new Formatter().format(
+                "%d.[%c][%c] %s\n", index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
+        return printSingleResponse.toString();
     }
 
     /**
@@ -135,7 +150,8 @@ public class TaskList {
      * default to having this level of flexibility.
      * @param keyword character sequence of consecutive alphabets to search by.
      */
-    public void printRelevantTasks(String keyword) {
+    public String printRelevantTasks(String keyword) {
+        StringBuilder printRelevantResponse = new StringBuilder();
         if (keyword.isEmpty()) {
             throw new EmptyKeywordException();
         }
@@ -147,32 +163,35 @@ public class TaskList {
             }
         }
         if (matchingTaskIndices.isEmpty()) {
-            System.out.println("Oops! There are no matching tasks for keyword: " + keyword);
+            printRelevantResponse.append("Oops! There are no matching tasks for keyword: " + keyword);
         } else if (matchingTaskIndices.size() == 1) {
-            System.out.println("Here is the unique matching task in your list:");
+            printRelevantResponse.append("Here is the unique matching task in your list:");
         } else {
-            System.out.println("Here are the matching tasks in your list:");
+            printRelevantResponse.append("Here are the matching tasks in your list:");
         }
         for (Integer index : matchingTaskIndices) {
             Task task = this.getTask(index);
-            System.out.printf("%d.[%c][%c] %s\n",
-                    index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription());
+            printRelevantResponse.append(new Formatter().format(
+                    "%d.[%c][%c] %s\n",
+                    index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
         }
+        return printRelevantResponse.toString();
     }
 
     /**
      * Print index, task type, task status and content of all tasks present in taskList in insertion order sequentially.
      */
-    public void printTasks() {
+    public String printTasks() {
+        StringBuilder printAllResponse = new StringBuilder();
         if (this.getTaskCount() > 1) {
-            System.out.println("Here are the tasks in your list:");
+            printAllResponse.append("Here are the tasks in your list:");
         } else if (this.getTaskCount() == 1) {
-            System.out.println("Here is the task in your list:");
+            printAllResponse.append("Here is the task in your list:");
         } else {
-            System.out.println("You have no tasks in your list.");
-            return;
+            return "You have no tasks in your list.";
         }
-        System.out.print(this);
+        printAllResponse.append(this);
+        return printAllResponse.toString();
     }
 
     /**
