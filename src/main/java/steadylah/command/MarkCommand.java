@@ -19,9 +19,9 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         try {
-            taskList.markTask(Integer.parseInt(this.contentInput.trim().split(" ")[0]));
+            return taskList.markTask(Integer.parseInt(this.contentInput.trim().split(" ")[0]));
         } catch (NumberFormatException e) {
             throw new InvalidIntegerException(this.contentInput);
         }

@@ -19,8 +19,8 @@ public class ToDoCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         ToDo todo = new ToDo(this.contentInput);
-        taskList.addTask(todo);
+        return taskList.addTask(todo);
     }
 }

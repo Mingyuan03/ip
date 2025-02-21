@@ -42,7 +42,17 @@ public class SteadyLah {
             this.ui.printDelimiter();
         }
     }
+
     public static void main(String[] args) {
         new SteadyLah().execute();
+    }
+
+    public String getResponse(String searchInput) {
+        try {
+            Command command = CommandParser.parseCommand(searchInput);
+            return command.execute(this.taskList, this.ui, this.storage);
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
     }
 }

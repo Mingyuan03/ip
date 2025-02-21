@@ -18,10 +18,10 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         if (!contentInput.isEmpty()) {
             System.out.println("Note that you don't need to list anything next time!");
         }
-        taskList.printTasks();
+        return taskList.printTasks();
     }
 }

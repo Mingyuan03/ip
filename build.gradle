@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'checkstyle'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
     id 'com.github.johnrengelman.shadow' version '7.1.2' // fat/uber JAR
 }
 
@@ -13,6 +14,11 @@ checkstyle {
 repositories {
     mavenCentral()
     maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
+}
+
+javafx {
+    version = "17.0.7"
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {
@@ -50,7 +56,7 @@ test {
 }
 
 application {
-    mainClass.set("steadylah.SteadyLah") // Modified from initial "seedu.duke.Main"
+    mainClass.set("steadylah.Launcher") // Modified from initial "seedu.duke.Main", then "steadylah.SteadyLah"
 }
 
 shadowJar {
