@@ -1,4 +1,4 @@
-package steadylah;
+package gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,14 +20,14 @@ public class DialogueBox extends HBox {
     @FXML
     private ImageView displayImage;
 
-    private String dialogueString; // Separate out initialize() method for better structuring.
-    private Image image; // Separate out initialize() method for better structuring.
+    private final String dialogueString; // Separate out initialize() method for better structuring.
+    private final Image image; // Separate out initialize() method for better structuring.
 
     private DialogueBox(String newDialogue, Image newImage) {
         this.dialogueString = newDialogue;
         this.image = newImage;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("DialogueBox.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogueBox.fxml"));
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
@@ -46,7 +46,7 @@ public class DialogueBox extends HBox {
     @FXML
     public void flip() {
         this.setAlignment(Pos.TOP_LEFT);
-        ObservableList<Node> dialogueImageNodes = FXCollections.observableArrayList();
+        ObservableList<Node> dialogueImageNodes = FXCollections.observableArrayList(this.getChildren());
         Collections.reverse(dialogueImageNodes);
         this.getChildren().setAll(dialogueImageNodes);
     }

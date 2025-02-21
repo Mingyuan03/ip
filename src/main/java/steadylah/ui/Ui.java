@@ -17,21 +17,22 @@ public class Ui {
     private final Scanner scanner = new Scanner(System.in);
 
     /**
-     * Print to console custom greeting message at the start of execution of task scheduler.
+     * Retrieve custom greeting message at the start of task scheduler
+     * @return Custom greeting message dependent on UI mode being either CLI xor GUI.
      */
-    public void printGreeting() {
-        System.out.println(GREETING);
-        System.out.println(DELIMITER);
+    public String getGreeting(boolean isGUI) {
+        return isGUI ? Ui.GREETING : Ui.GREETING + "\n" + Ui.DELIMITER;
     }
 
     /**
-     * Print to console custom goodbye message at the end of normal termination of task scheduler.
+     * Retrieve custom goodbye message at the end of normal termination of task scheduler.
      * It is a designer choice that abnormal termination doesn't call this method.
+     * @return Custom goodbye message dependent on UI mode being either CLI xor GUI.
      */
-    public void printGoodbye() {
-        System.out.println(GOODBYE);
-        System.out.println(DELIMITER);
+    public String getGoodbye(boolean isGUI) {
+        return isGUI ? Ui.GOODBYE : Ui.GOODBYE + "\n" + Ui.DELIMITER;
     }
+
 
     public void printDelimiter() {
         System.out.println(DELIMITER);

@@ -56,7 +56,7 @@ test {
 }
 
 application {
-    mainClass.set("steadylah.Launcher") // Modified from initial "seedu.duke.Main", then "steadylah.SteadyLah"
+    mainClass.set("gui.Launcher") // Modified from initial "seedu.duke.Main", then "steadylah.SteadyLah"
 }
 
 shadowJar {

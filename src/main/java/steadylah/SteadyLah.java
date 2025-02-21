@@ -19,40 +19,65 @@ public class SteadyLah {
     private final Ui ui = new Ui();
 
     /**
-     * Call intended scheduler behaviour per usage, abstractifying out implementation details.
+     * Handle command-processing logic for both CLI and GUI modes as an auxiliary class of execute(),
+     * separated from it so that its String return value qualifies as input for getResponse linking to Gui.java.
+     * @param rawInput Human-user descriptionString input.
+     * @return Response String to be displayed directly in GUI mode.
+     */
+    private String processCommand(String rawInput) {
+        try {
+            Command command = CommandParser.parseCommand(rawInput);
+            return command.execute(this.taskList, this.ui, this.storage); // Need command::execute return String.
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
+    }
+
+    /**
+     * Retrieve a response from new SteadyLah()::processCommand to display in GUI mode.
+     * @param rawInput Human-user descriptionString input.
+     * @return Response String to be displayed directly in GUI mode.
+     */
+    public String getResponse(String rawInput) {
+        return this.processCommand(rawInput);
+    }
+
+    public String loadFromCache() {
+        this.storage.loadFromCache(this.taskList);
+        return this.ui.getGreeting(true);
+    }
+
+    public String saveToCache() {
+        this.storage.saveToCache(this.taskList);
+        return this.ui.getGoodbye(true);
+    }
+
+    /**
+     * Call intended scheduler behaviour per usage in CLI mode, abstractifying out implementation details.
      * This author envisages expanding on its implementation via a timeout mechanism to avoid
      * the theoretical edge case of the scheduler being stuck in loop anticipating user response.
      */
     public void execute() {
-        this.ui.printGreeting();
+        System.out.println(this.ui.getGreeting(false));
         this.storage.loadFromCache(this.taskList);
         while (true) {
-            String rawInput = ui.readInput();
+            String rawInput = ui.readInput().trim();
             if (rawInput.equals("bye")) {
-                this.ui.printGoodbye();
+                System.out.println(this.ui.getGoodbye(false));
                 this.storage.saveToCache(this.taskList);
                 break;
             }
-            try {
-                Command command = CommandParser.parseCommand(rawInput);
-                command.execute(this.taskList, this.ui, this.storage);
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-            }
+            String response = this.processCommand(rawInput);
+            System.out.println(response); // Print response for CLI mode.
             this.ui.printDelimiter();
         }
     }
 
+    /**
+     * Run program in solely CLI mode.
+     * @param args Optional arguments.
+     */
     public static void main(String[] args) {
         new SteadyLah().execute();
-    }
-
-    public String getResponse(String searchInput) {
-        try {
-            Command command = CommandParser.parseCommand(searchInput);
-            return command.execute(this.taskList, this.ui, this.storage);
-        } catch (RuntimeException e) {
-            return e.getMessage();
-        }
     }
 }

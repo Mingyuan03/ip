@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import steadylah.exception.EmptyKeywordException;
 import steadylah.exception.EmptyTaskListException;
+import steadylah.exception.InvalidIndexException;
 
 /**
  * @author Lu Mingyuan
@@ -28,7 +29,11 @@ public class TaskList {
      * @return task at 1-indexed location.
      */
     public Task getTask(int index) {
-        return this.taskLogs.get(index - 1);
+        try {
+            return this.taskLogs.get(index - 1);
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidIndexException(index);
+        }
     }
 
     /**
@@ -45,14 +50,14 @@ public class TaskList {
      */
     public String addTask(Task task) {
         StringBuilder addResponse = new StringBuilder();
-        addResponse.append("Got it. I've added this task:");
+        addResponse.append("Got it. I've added this task:\n");
         this.taskLogs.add(task);
         addResponse.append(new Formatter().format("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription()).toString());
         if (this.taskLogs.size() == 1) {
             addResponse.append("Now you have 1 task in the list.");
         } else {
             addResponse.append(new Formatter().format(
-                    "Now you have %d tasks in the list.\n", this.getTaskCount()).toString());
+                    "Now you have %d tasks in the list.", this.getTaskCount()).toString());
         }
         return addResponse.toString();
     }
@@ -68,14 +73,14 @@ public class TaskList {
         } else if (index < 1 || index > this.getTaskCount()) {
             throw new IndexOutOfBoundsException("Index must be from 1 to " + this.getTaskCount());
         }
-        deleteResponse.append("Noted. I've removed this task:");
+        deleteResponse.append("Noted. I've removed this task:\n");
         Task task = this.getTask(index);
         deleteResponse.append(new Formatter().format(
                 "[%c][%c] %s\n", task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
         this.taskLogs.remove(index - 1); // Implicitly shift all subsequent tasks forward
         if (this.taskLogs.size() > 1) {
             deleteResponse.append(new Formatter().format(
-                    "Now you have %d tasks in the list.\n", this.getTaskCount()).toString());
+                    "Now you have %d tasks in the list.", this.getTaskCount()).toString());
         } else if (this.taskLogs.size() == 1) {
             deleteResponse.append("Now you have 1 task in the list.");
         } else {
@@ -97,10 +102,10 @@ public class TaskList {
         if (task.isDone()) {
             markResponse.append("Oops! This task is already marked as done.");
         } else {
-            markResponse.append("Nice! I've marked this task as done:");
+            markResponse.append("Nice! I've marked this task as done:\n");
             task.toggle();
             markResponse.append(new Formatter().format(
-                    "[%c][X] %s\n", task.getTypeIcon(), task.getDescription()).toString());
+                    "[%c][X] %s", task.getTypeIcon(), task.getDescription()).toString());
         }
         return markResponse.toString();
     }
@@ -120,10 +125,10 @@ public class TaskList {
         if (!task.isDone()) {
             unmarkResponse.append("Oops! This task is already marked as undone.");
         } else {
-            unmarkResponse.append("OK, I've marked this task as not done yet:");
+            unmarkResponse.append("OK, I've marked this task as not done yet:\n");
             task.toggle();
             unmarkResponse.append(new Formatter().format(
-                    "[%c][ ] %s\n", task.getTypeIcon(), task.getDescription()).toString());
+                    "[%c][ ] %s", task.getTypeIcon(), task.getDescription()).toString());
         }
         return unmarkResponse.toString();
     }
@@ -138,9 +143,9 @@ public class TaskList {
             throw new EmptyTaskListException();
         }
         Task task = this.getTask(index);
-        printSingleResponse.append("Here is the task in your list:");
+        printSingleResponse.append("Here is the task in your list:\n");
         printSingleResponse.append(new Formatter().format(
-                "%d.[%c][%c] %s\n", index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
+                "%d.[%c][%c] %s", index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
         return printSingleResponse.toString();
     }
 
@@ -165,15 +170,18 @@ public class TaskList {
         if (matchingTaskIndices.isEmpty()) {
             printRelevantResponse.append("Oops! There are no matching tasks for keyword: " + keyword);
         } else if (matchingTaskIndices.size() == 1) {
-            printRelevantResponse.append("Here is the unique matching task in your list:");
+            printRelevantResponse.append("Here is the unique matching task in your list:\n");
         } else {
-            printRelevantResponse.append("Here are the matching tasks in your list:");
+            printRelevantResponse.append("Here are the matching tasks in your list:\n");
         }
         for (Integer index : matchingTaskIndices) {
             Task task = this.getTask(index);
             printRelevantResponse.append(new Formatter().format(
-                    "%d.[%c][%c] %s\n",
+                    "%d.[%c][%c] %s",
                     index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
+            if (index < matchingTaskIndices.size()) {
+                printRelevantResponse.append("\n");
+            }
         }
         return printRelevantResponse.toString();
     }
@@ -184,9 +192,9 @@ public class TaskList {
     public String printTasks() {
         StringBuilder printAllResponse = new StringBuilder();
         if (this.getTaskCount() > 1) {
-            printAllResponse.append("Here are the tasks in your list:");
+            printAllResponse.append("Here are the tasks in your list:\n");
         } else if (this.getTaskCount() == 1) {
-            printAllResponse.append("Here is the task in your list:");
+            printAllResponse.append("Here is the task in your list:\n");
         } else {
             return "You have no tasks in your list.";
         }
@@ -252,8 +260,11 @@ public class TaskList {
             Task task = this.getTask(index);
             char taskType = task.getTypeIcon();
             char crossIfDone = task.getStatusIcon();
-            str.append(String.format("%d.[%c][%c] %s\n",
+            str.append(String.format("%d.[%c][%c] %s",
                     index, taskType, crossIfDone, task.getDescription()));
+            if (index < this.getTaskCount()) {
+                str.append("\n");
+            }
         }
         return str.toString();
     }
