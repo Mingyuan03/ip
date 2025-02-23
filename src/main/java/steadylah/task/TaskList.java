@@ -162,15 +162,14 @@ public class TaskList {
         }
         StringBuilder printRelevantResponse = new StringBuilder();
         HashSet<Integer> matchingTaskIndices = new HashSet<>();
-        for (int index = 1; index <= this.getTaskCount(); index++) {
-            Task task = this.getTask(index);
+        this.taskLogs.stream().filter(task -> {
             for (String keyword : keywords) {
                 if (task.isFoundKeyword(keyword)) {
-                    matchingTaskIndices.add(index);
-                    break; // Adaptive search
+                    return true; // Adaptive search.
                 }
             }
-        }
+            return false;
+        }).forEach(task -> matchingTaskIndices.add(this.taskLogs.indexOf(task) + 1));
         if (matchingTaskIndices.isEmpty()) {
             if (keywords.length == 1) {
                 printRelevantResponse.append("Oops! There are no matching tasks for keyword: ");
