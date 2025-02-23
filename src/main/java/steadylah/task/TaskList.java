@@ -52,12 +52,12 @@ public class TaskList {
         StringBuilder addResponse = new StringBuilder();
         addResponse.append("Got it. I've added this task:\n");
         this.taskLogs.add(task);
-        addResponse.append(new Formatter().format("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription()).toString());
+        addResponse.append(new Formatter().format("[%c][ ] %s\n", task.getTypeIcon(), task.getDescription()));
         if (this.taskLogs.size() == 1) {
             addResponse.append("Now you have 1 task in the list.");
         } else {
             addResponse.append(new Formatter().format(
-                    "Now you have %d tasks in the list.", this.getTaskCount()).toString());
+                    "Now you have %d tasks in the list.", this.getTaskCount()));
         }
         return addResponse.toString();
     }
@@ -76,11 +76,11 @@ public class TaskList {
         deleteResponse.append("Noted. I've removed this task:\n");
         Task task = this.getTask(index);
         deleteResponse.append(new Formatter().format(
-                "[%c][%c] %s\n", task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
+                "[%c][%c] %s\n", task.getTypeIcon(), task.getStatusIcon(), task.getDescription()));
         this.taskLogs.remove(index - 1); // Implicitly shift all subsequent tasks forward
         if (this.taskLogs.size() > 1) {
             deleteResponse.append(new Formatter().format(
-                    "Now you have %d tasks in the list.", this.getTaskCount()).toString());
+                    "Now you have %d tasks in the list.", this.getTaskCount()));
         } else if (this.taskLogs.size() == 1) {
             deleteResponse.append("Now you have 1 task in the list.");
         } else {
@@ -105,7 +105,7 @@ public class TaskList {
             markResponse.append("Nice! I've marked this task as done:\n");
             task.toggle();
             markResponse.append(new Formatter().format(
-                    "[%c][X] %s", task.getTypeIcon(), task.getDescription()).toString());
+                    "[%c][X] %s", task.getTypeIcon(), task.getDescription()));
         }
         return markResponse.toString();
     }
@@ -128,7 +128,7 @@ public class TaskList {
             unmarkResponse.append("OK, I've marked this task as not done yet:\n");
             task.toggle();
             unmarkResponse.append(new Formatter().format(
-                    "[%c][ ] %s", task.getTypeIcon(), task.getDescription()).toString());
+                    "[%c][ ] %s", task.getTypeIcon(), task.getDescription()));
         }
         return unmarkResponse.toString();
     }
@@ -145,7 +145,7 @@ public class TaskList {
         Task task = this.getTask(index);
         printSingleResponse.append("Here is the task in your list:\n");
         printSingleResponse.append(new Formatter().format(
-                "%d.[%c][%c] %s", index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
+                "%d.[%c][%c] %s", index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()));
         return printSingleResponse.toString();
     }
 
@@ -153,22 +153,33 @@ public class TaskList {
      * Print to console the index, task type, task status and content of all task(s) containing the keyword in content.
      * It is a deliberate designer choice to not search by whole keyword, since search functions in real-life products
      * default to having this level of flexibility.
-     * @param keyword character sequence of consecutive alphabets to search by.
+     * @param keywords array of character sequences of consecutive alphabets to search by, vararg for more flexibility.
      */
-    public String printRelevantTasks(String keyword) {
+    public String printRelevantTasks(String... keywords) {
         StringBuilder printRelevantResponse = new StringBuilder();
-        if (keyword.isEmpty()) {
+        if (keywords.length == 0) {
             throw new EmptyKeywordException();
         }
         HashSet<Integer> matchingTaskIndices = new HashSet<>();
         for (int index = 1; index <= this.getTaskCount(); index++) {
             Task task = this.getTask(index);
-            if (task.isFoundKeyword(keyword)) {
-                matchingTaskIndices.add(index);
+            for (String keyword : keywords) {
+                if (task.isFoundKeyword(keyword)) {
+                    matchingTaskIndices.add(index);
+                    break; // Adaptive search
+                }
             }
         }
         if (matchingTaskIndices.isEmpty()) {
-            printRelevantResponse.append("Oops! There are no matching tasks for keyword: " + keyword);
+            if (keywords.length == 1) {
+                printRelevantResponse.append("Oops! There are no matching tasks for keyword: ");
+            } else {
+                printRelevantResponse.append("Oops! There are no matching tasks for keywords: ");
+            }
+            for (int index = 0; index < keywords.length - 1; index++) {
+                printRelevantResponse.append(keywords[index]).append(",");
+            }
+            printRelevantResponse.append(keywords[keywords.length - 1]);
         } else if (matchingTaskIndices.size() == 1) {
             printRelevantResponse.append("Here is the unique matching task in your list:\n");
         } else {
@@ -178,7 +189,7 @@ public class TaskList {
             Task task = this.getTask(index);
             printRelevantResponse.append(new Formatter().format(
                     "%d.[%c][%c] %s",
-                    index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()).toString());
+                    index, task.getTypeIcon(), task.getStatusIcon(), task.getDescription()));
             if (index < matchingTaskIndices.size()) {
                 printRelevantResponse.append("\n");
             }

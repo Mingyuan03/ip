@@ -39,16 +39,20 @@ public class DialogueBox extends HBox {
 
     @FXML
     public void initialize() {
+        assert this.dialogue !=null;
         this.dialogue.setText(this.dialogueString);
+        assert this.displayImage != null;
         this.displayImage.setImage(this.image);
     }
 
     @FXML
     public void flip() {
         this.setAlignment(Pos.TOP_LEFT);
+        this.dialogue.getStyleClass().add("reply-label");
         ObservableList<Node> dialogueImageNodes = FXCollections.observableArrayList(this.getChildren());
         Collections.reverse(dialogueImageNodes);
         this.getChildren().setAll(dialogueImageNodes);
+
     }
 
     public static DialogueBox showUserDialogueBox(String newDialogue, Image newImage) {

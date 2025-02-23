@@ -37,15 +37,15 @@ public enum Help {
             if (help.equals(Help.DEADLINE)) {
                 fullHelp.append("FOR TASK INSERTION:\n");
             } else if (help.equals(DELETE)) {
-                fullHelp.append("FOR TASK DELETION:\n");
+                fullHelp.append("\nFOR TASK DELETION:\n");
             } else if (help.equals(MARK)) {
-                fullHelp.append("FOR TASK ANNOTATION:\n");
+                fullHelp.append("\nFOR TASK ANNOTATION:\n");
             } else if (help.equals(FIND)) {
-                fullHelp.append("FOR TASK SEARCH BY KEYWORD:\n");
+                fullHelp.append("\nFOR TASK SEARCH BY KEYWORD:\n");
             } else if (help.equals(FIND_INDEX)) {
-                fullHelp.append("FOR TASK SEARCH BY INDEX:\n");
+                fullHelp.append("\nFOR TASK SEARCH BY INDEX:\n");
             } else if (help.equals(HELP)) {
-                fullHelp.append("FOR MISCELLANEOUS FUNCTIONALITIES:\n");
+                fullHelp.append("\nFOR MISCELLANEOUS FUNCTIONALITIES:\n");
             }
             fullHelp.append(help).append(":");
             fullHelp.append(help.getSpecificHelp());
