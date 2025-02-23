@@ -1,7 +1,10 @@
 package steadylah;
 
+import java.lang.reflect.InvocationTargetException;
+
 import steadylah.command.Command;
-import steadylah.command.CommandParser;
+import steadylah.command.CommandProcessor;
+import steadylah.exception.SteadyLahException;
 import steadylah.storage.Storage;
 import steadylah.task.TaskList;
 import steadylah.ui.Ui;
@@ -24,12 +27,17 @@ public class SteadyLah {
      * @param rawInput Human-user descriptionString input.
      * @return Response String to be displayed directly in GUI mode.
      */
-    private String processCommand(String rawInput) {
+    private String processCommandByMap(String rawInput) {
         try {
-            Command command = CommandParser.parseCommand(rawInput);
+            Command command = CommandProcessor.processCommandByMap(rawInput);
             return command.execute(this.taskList, this.ui, this.storage); // Need command::execute return String.
-        } catch (RuntimeException e) {
+        } catch (SteadyLahException e) {
             return e.getMessage();
+        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException
+                 | IllegalAccessException e) {
+            return "Error in processing command: " + e.getMessage();
+        } catch (RuntimeException e) {
+            return "A wild runtime exception occurred: " + e.getMessage();
         }
     }
 
@@ -39,7 +47,7 @@ public class SteadyLah {
      * @return Response String to be displayed directly in GUI mode.
      */
     public String getResponse(String rawInput) {
-        return this.processCommand(rawInput);
+        return this.processCommandByMap(rawInput);
     }
 
     /**
@@ -47,7 +55,7 @@ public class SteadyLah {
      * Bundle load and greet functionalities to reduce nesting vs strict conformance to SLAP.
      * @return Greeting message identical to CLI mode's ui::getGreeting(true) solely for GUI mode.
      */
-    public String loadFromCache() {
+    public String loadTasksFromCache() {
         this.storage.loadFromCache(this.taskList);
         return this.ui.getGreeting(true);
     }
@@ -57,7 +65,7 @@ public class SteadyLah {
      * Bundle save and goodbye functionalities to reduce nesting vs strict conformance to SLAP.
      * @return Goodbye message identical to CLI mode's ui::getGoodbye(true) solely for GUI mode.
      */
-    public String saveToCache() {
+    public String saveTasksToCache() {
         this.storage.saveToCache(this.taskList);
         return this.ui.getGoodbye(true);
     }
@@ -77,7 +85,7 @@ public class SteadyLah {
                 this.storage.saveToCache(this.taskList);
                 break;
             }
-            String response = this.processCommand(rawInput);
+            String response = this.processCommandByMap(rawInput);
             System.out.println(response); // Print response for CLI mode.
             this.ui.printDelimiter();
         }

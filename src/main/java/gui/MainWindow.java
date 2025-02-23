@@ -56,7 +56,7 @@ public class MainWindow extends AnchorPane {
      */
     private void loadPreviousSession() {
         this.dialogueContainer.getChildren().add(
-                DialogueBox.showSteadyLahDialogueBox(this.steadyLah.loadFromCache(), this.steadyLahImage)
+                DialogueBox.showSteadyLahDialogueBox(this.steadyLah.loadTasksFromCache(), this.steadyLahImage)
         );
     }
 
@@ -71,7 +71,7 @@ public class MainWindow extends AnchorPane {
         if (searchInput.equals("bye")) {
             this.dialogueContainer.getChildren().addAll(
                     DialogueBox.showUserDialogueBox(searchInput, this.userImage),
-                    DialogueBox.showSteadyLahDialogueBox(this.steadyLah.saveToCache(), this.steadyLahImage)
+                    DialogueBox.showSteadyLahDialogueBox(this.steadyLah.saveTasksToCache(), this.steadyLahImage)
             );
             Platform.exit();
             return; // Terminate on reaching exit command

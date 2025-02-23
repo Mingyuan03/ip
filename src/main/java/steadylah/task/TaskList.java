@@ -157,10 +157,10 @@ public class TaskList {
      * @param keywords array of character sequences of consecutive alphabets to search by, vararg for more flexibility.
      */
     public String printRelevantTasks(String... keywords) {
-        StringBuilder printRelevantResponse = new StringBuilder();
         if (keywords.length == 0) {
             throw new EmptyKeywordException();
         }
+        StringBuilder printRelevantResponse = new StringBuilder();
         HashSet<Integer> matchingTaskIndices = new HashSet<>();
         for (int index = 1; index <= this.getTaskCount(); index++) {
             Task task = this.getTask(index);
@@ -202,13 +202,14 @@ public class TaskList {
      * Print index, task type, task status and content of all tasks present in taskList in insertion order sequentially.
      */
     public String printTasks() {
+        if (this.getTaskCount() == 0) {
+            return "You have no tasks in your list.";
+        }
         StringBuilder printAllResponse = new StringBuilder();
         if (this.getTaskCount() > 1) {
             printAllResponse.append("Here are the tasks in your list:\n");
-        } else if (this.getTaskCount() == 1) {
-            printAllResponse.append("Here is the task in your list:\n");
         } else {
-            return "You have no tasks in your list.";
+            printAllResponse.append("Here is the task in your list:\n");
         }
         printAllResponse.append(this);
         return printAllResponse.toString();
@@ -258,7 +259,7 @@ public class TaskList {
      */
     public List<String> toLines() {
         ArrayList<String> cacheLines = new ArrayList<>();
-        for (Task task : this.taskLogs) {
+        for (Task task : this.taskLogs) { // Can be null
             cacheLines.add(String.format("[%c][%c] %s",
                     task.getTypeIcon(), task.getStatusIcon(), task.getDescription()));
         }
