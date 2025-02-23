@@ -28,10 +28,13 @@ public class DialogueBox extends HBox {
     private final Image image; // Separate out initialize() method for better structuring.
 
     private DialogueBox(String newDialogue, Image newImage) {
+        assert newDialogue != null : "Dialogue text cannot be null";
         this.dialogueString = newDialogue;
+        assert newImage != null : "Image cannot be null";
         this.image = newImage;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogueBox.fxml"));
+            assert fxmlLoader.getLocation() != null : "DialogueBox.fxml absent in ../resources/view/DialogueBox.fxml";
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();

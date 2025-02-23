@@ -7,7 +7,7 @@ package steadylah.exception;
  * @author Lu Mingyuan
  * @version v1.0.0-alpha
  */
-public class InvalidIntegerException extends RuntimeException {
+public class InvalidIntegerException extends SteadyLahException {
     public InvalidIntegerException(String contentInput) {
         super("You typed a non integer: " + contentInput);
     }
