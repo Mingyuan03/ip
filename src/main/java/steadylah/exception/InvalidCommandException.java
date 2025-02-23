@@ -7,7 +7,7 @@ import steadylah.command.Help;
  * @author Lu Mingyuan
  * @version v1.0.0-alpha
  */
-public class InvalidCommandException extends SteadyLahException {
+public class InvalidCommandException extends RuntimeException {
     public InvalidCommandException() {
         super("You typed an invalid command!\n\n" + Help.getFullHelp());
     }

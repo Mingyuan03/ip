@@ -46,7 +46,7 @@ public enum Datetime {
             try {
                 return Optional.of(LocalDateTime.parse(timeString, format.formatter));
             } catch (DateTimeException ignored) {
-                // Ignore incorrect datetime by passing it on to eventually raise EmptyTimeException.
+                continue;
             }
         }
         return Optional.empty();
@@ -63,7 +63,7 @@ public enum Datetime {
             try {
                 return Optional.of(LocalDate.parse(timeString, format.formatter));
             } catch (DateTimeException ignored) {
-                // Ignore incorrect datetime by passing it on to eventually raise EmptyTimeException.
+                continue;
             }
         }
         return Optional.empty();

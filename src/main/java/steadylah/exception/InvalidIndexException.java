@@ -5,7 +5,7 @@ package steadylah.exception;
  * @author Lu Mingyuan
  * @version v1.0.0-alpha
  */
-public class InvalidIndexException extends SteadyLahException {
+public class InvalidIndexException extends RuntimeException {
     public InvalidIndexException(int index) {
         super("You typed an invalid index: " + index);
     }

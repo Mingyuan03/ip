@@ -1,10 +1,7 @@
 package steadylah;
 
-import java.lang.reflect.InvocationTargetException;
-
 import steadylah.command.Command;
-import steadylah.command.CommandProcessor;
-import steadylah.exception.SteadyLahException;
+import steadylah.command.CommandParser;
 import steadylah.storage.Storage;
 import steadylah.task.TaskList;
 import steadylah.ui.Ui;
@@ -29,15 +26,10 @@ public class SteadyLah {
      */
     private String processCommand(String rawInput) {
         try {
-            Command command = CommandProcessor.processCommandByMap(rawInput);
+            Command command = CommandParser.parseCommand(rawInput);
             return command.execute(this.taskList, this.ui, this.storage); // Need command::execute return String.
-        } catch (SteadyLahException e) {
-            return e.getMessage();
-        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException
-                 | IllegalAccessException e) {
-            return "Error in processing command: " + e.getMessage();
         } catch (RuntimeException e) {
-            return "A wild runtime exception occurred: " + e.getMessage();
+            return e.getMessage();
         }
     }
 
@@ -55,7 +47,7 @@ public class SteadyLah {
      * Bundle load and greet functionalities to reduce nesting vs strict conformance to SLAP.
      * @return Greeting message identical to CLI mode's ui::getGreeting(true) solely for GUI mode.
      */
-    public String loadTasksFromCache() {
+    public String loadFromCache() {
         this.storage.loadFromCache(this.taskList);
         return this.ui.getGreeting(true);
     }
@@ -65,7 +57,7 @@ public class SteadyLah {
      * Bundle save and goodbye functionalities to reduce nesting vs strict conformance to SLAP.
      * @return Goodbye message identical to CLI mode's ui::getGoodbye(true) solely for GUI mode.
      */
-    public String saveTasksToCache() {
+    public String saveToCache() {
         this.storage.saveToCache(this.taskList);
         return this.ui.getGoodbye(true);
     }

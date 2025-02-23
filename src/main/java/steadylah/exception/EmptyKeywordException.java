@@ -5,7 +5,7 @@ package steadylah.exception;
  * @author Lu Mingyuan
  * @version v1.0.0-alpha
  */
-public class EmptyKeywordException extends SteadyLahException {
+public class EmptyKeywordException extends RuntimeException {
     public EmptyKeywordException() {
         super("Keyword must not be empty for task search!");
     }
