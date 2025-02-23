@@ -161,15 +161,14 @@ public class TaskList {
             throw new EmptyKeywordException();
         }
         HashSet<Integer> matchingTaskIndices = new HashSet<>();
-        for (int index = 1; index <= this.getTaskCount(); index++) {
-            Task task = this.getTask(index);
+        this.taskLogs.stream().filter(task -> {
             for (String keyword : keywords) {
                 if (task.isFoundKeyword(keyword)) {
-                    matchingTaskIndices.add(index);
-                    break; // Adaptive search
+                    return true; // Adaptive search.
                 }
             }
-        }
+            return false;
+        }).forEach(task -> matchingTaskIndices.add(this.taskLogs.indexOf(task) + 1));
         if (matchingTaskIndices.isEmpty()) {
             if (keywords.length == 1) {
                 printRelevantResponse.append("Oops! There are no matching tasks for keyword: ");
@@ -201,13 +200,14 @@ public class TaskList {
      * Print index, task type, task status and content of all tasks present in taskList in insertion order sequentially.
      */
     public String printTasks() {
+        if (this.getTaskCount() == 0) {
+            return "You have no tasks in your list.";
+        }
         StringBuilder printAllResponse = new StringBuilder();
         if (this.getTaskCount() > 1) {
             printAllResponse.append("Here are the tasks in your list:\n");
-        } else if (this.getTaskCount() == 1) {
-            printAllResponse.append("Here is the task in your list:\n");
         } else {
-            return "You have no tasks in your list.";
+            printAllResponse.append("Here is the task in your list:\n");
         }
         printAllResponse.append(this);
         return printAllResponse.toString();
