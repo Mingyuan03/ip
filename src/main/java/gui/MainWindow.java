@@ -73,14 +73,17 @@ public class MainWindow extends AnchorPane {
                     DialogueBox.showUserDialogueBox(searchInput, this.userImage),
                     DialogueBox.showSteadyLahDialogueBox(this.steadyLah.saveTasksToCache(), this.steadyLahImage)
             );
-            Platform.exit();
-            return; // Terminate on reaching exit command
+            Platform.exit(); // Terminate on reaching exit command
+            return;
         }
         String steadyLahOutput = this.steadyLah.getResponse(searchInput);
         this.dialogueContainer.getChildren().addAll(
                 DialogueBox.showUserDialogueBox(searchInput, this.userImage),
                 DialogueBox.showSteadyLahDialogueBox(steadyLahOutput, this.steadyLahImage)
         );
+        if (searchInput.equals("help")) {
+            new HelpBox().showHelp();
+        }
         this.searchBox.clear();
     }
 }
