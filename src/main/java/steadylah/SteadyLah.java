@@ -42,11 +42,21 @@ public class SteadyLah {
         return this.processCommand(rawInput);
     }
 
+    /**
+     * Simulate CLI mode's storage::loadFromCache directly here in GUI mode, given its lack of storage, for persistence.
+     * Bundle load and greet functionalities to reduce nesting vs strict conformance to SLAP.
+     * @return Greeting message identical to CLI mode's ui::getGreeting(true) solely for GUI mode.
+     */
     public String loadFromCache() {
         this.storage.loadFromCache(this.taskList);
         return this.ui.getGreeting(true);
     }
 
+    /**
+     * Simulate CLI mode's storage::saveToCache directly here in GUI mode, given its lack of storage, for persistence.
+     * Bundle save and goodbye functionalities to reduce nesting vs strict conformance to SLAP.
+     * @return Goodbye message identical to CLI mode's ui::getGoodbye(true) solely for GUI mode.
+     */
     public String saveToCache() {
         this.storage.saveToCache(this.taskList);
         return this.ui.getGoodbye(true);

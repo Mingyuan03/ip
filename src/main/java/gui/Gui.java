@@ -1,5 +1,7 @@
 package gui;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,8 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import steadylah.SteadyLah;
 
-import java.io.IOException;
-
+/**
+ * @author Lu Mingyuan
+ * @version v1.0.0-alpha
+ */
 public class Gui extends Application {
     private final SteadyLah steadyLah = new SteadyLah();
 

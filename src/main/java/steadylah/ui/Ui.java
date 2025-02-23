@@ -18,22 +18,24 @@ public class Ui {
 
     /**
      * Retrieve custom greeting message at the start of task scheduler
-     * @return Custom greeting message dependent on UI mode being either CLI xor GUI.
+     * @return Sentient greeting message dependent on UI mode being either CLI xor GUI.
      */
-    public String getGreeting(boolean isGUI) {
-        return isGUI ? Ui.GREETING : Ui.GREETING + "\n" + Ui.DELIMITER;
+    public String getGreeting(boolean isGui) {
+        return isGui ? Ui.GREETING : Ui.GREETING + "\n" + Ui.DELIMITER;
     }
 
     /**
      * Retrieve custom goodbye message at the end of normal termination of task scheduler.
      * It is a designer choice that abnormal termination doesn't call this method.
-     * @return Custom goodbye message dependent on UI mode being either CLI xor GUI.
+     * @return Sentient goodbye message dependent on UI mode being either CLI xor GUI.
      */
-    public String getGoodbye(boolean isGUI) {
-        return isGUI ? Ui.GOODBYE : Ui.GOODBYE + "\n" + Ui.DELIMITER;
+    public String getGoodbye(boolean isGui) {
+        return isGui ? Ui.GOODBYE : Ui.GOODBYE + "\n" + Ui.DELIMITER;
     }
 
-
+    /**
+     * Print to console delimiter for better readability solely in CLI mode while app is active.
+     */
     public void printDelimiter() {
         System.out.println(DELIMITER);
     }
