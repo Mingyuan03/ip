@@ -20,7 +20,7 @@ public class HelpCommand extends Command {
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         return "You sought help! "
-                + "As Dumbledore says, help will always be given to those who ask for it\n" +
+                + "As Dumbledore says, help will always be given to those who ask for it!\n\n" +
                 Help.getFullHelp();
     }
 }

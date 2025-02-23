@@ -1,0 +1,92 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #EF7C00, #003D7C); /* NUS Orange and NUS Blue. */
+    -fx-background-insets: 0, 50%;
+}
+
+.text-field {
+    -fx-background-color: linear-gradient(to bottom right, #EF7C00, #003D7C); /* NUS Orange and NUS Blue. */
+    -fx-background-insets: 0, 50%;
+}
+
+#scrollPane {
+    -fx-background-color: linear-gradient(to bottom right, #EF7C00, #003D7C); /* NUS Orange and NUS Blue. */
+    -fx-border-color: gold; /* Subtle muted orange color exuding warmth. */
+    -fx-background-insets: 0, 50%;
+    -fx-border-width: 1px;
+}
+
+#scrollPane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-font-size: 10px;  /* Change width of scroll bar. */
+    -fx-background-color: honeydew;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: maroon;
+    -fx-background-radius: 1em;
+}
+
+/* Hides the increment and decrement buttons. */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+
+#dialogueContainer {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+}
+
+.user-image {
+    float: right; /* Align user images to the right */
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+.bot-image {
+    float: left; /* Align bot images to the left */
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+#dialogue { /* Style right-aligned user dialogue. */
+    -fx-background-color: brown;
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+    -fx-background-radius: 15px;
+}
+
+#dialogue.alternative { /* Style left-aligned bot dialogue. */
+    -fx-background-color: orange;
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+    -fx-background-radius: 15px;
+}
+
+#searchButton {
+    -fx-background-color: deepskyblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+#searchButton:hover {
+    -fx-background-color: navy; /* Darken on hovering. */
+}
+
+#searchButton:pressed {
+    -fx-background-color: orange; /* Complementary colour of blue to better alert user that button is pressed. */
+}
+
+#searchBox {
+    -fx-background-color: white;
+    -fx-border-color: gold;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
