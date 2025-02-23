@@ -18,7 +18,7 @@ REM no error here, ERRORLEVEL == 0
 
 REM run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
 REM Main file modified from Duke.java to SteadyLah.java, hence the name change below
-java -classpath ..\bin steadylah.SteadyLah < input.txt > ACTUAL.TXT
+java -ea -classpath ..\bin steadylah.SteadyLah < input.txt > ACTUAL.TXT
 
 REM compare the output to the expected output
 FC ACTUAL.TXT EXPECTED.TXT
