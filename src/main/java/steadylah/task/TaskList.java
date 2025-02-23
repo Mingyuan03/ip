@@ -49,6 +49,7 @@ public class TaskList {
      * @param task New task.
      */
     public String addTask(Task task) {
+        assert task != null : "Task cannot be null for meaningful task insertion.";
         StringBuilder addResponse = new StringBuilder();
         addResponse.append("Got it. I've added this task:\n");
         this.taskLogs.add(task);
