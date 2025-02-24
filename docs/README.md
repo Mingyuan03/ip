@@ -38,13 +38,35 @@ While BayMax isn't real...YasuMax is! Try it below and call it your dedicated st
 You can check your Java version on any OS by running in your terminal: `java -version`
 2. Navigate to the [YasuMax GitHub Releases](https://github.com/Mingyuan03/ip/releases) page.
 3. Download the latest `YasuMax.jar` file to a local home directory of your choice.
-4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode ![here](/Start.png)
+4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode ![here]
 
 ## Quick Demo
 1. Type `help` in GUI mode for all available commands alongside their formats. A resizable pop-up window should appear:
    1. Take note that this pop-up window must be closed explicitly to ensure you have read through them thoroughly!
    2. `YasuMax` allows you to further customise your `help` by specifying 1 additional command to get its format! E.g.:
-2. Try out the following sample commands in sequence. Ensure you get the result depicted in the images below:
-3. You are good to go, captain!
+2. Try out the following sample commands in sequence:
+   ```
+   help help
+   deadline CS2103T /by 20250224
+   list
+   mark 1
+   event NUS Math Underground Seminar /from 20250224 /to 2025028
+   todo send-off papa at Changi Terminal 2
+   find_index 2
+   find 2
+   mark 3
+   unmark 1
+   list
+   delete 3
+   clear
+   bye
+3. Ensure you get the result for Step 2 as depicted in the 6 images below:
+   ![sample-1]<b>
+   ![sample-2]<b>
+   ![sample-3]<b>
+   ![sample-4]<b>
+   ![sample-5]<b>
+   ![sample-6]<b>
+4. You are good to go, captain!
 
 
