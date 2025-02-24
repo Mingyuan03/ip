@@ -17,15 +17,13 @@ FOR TASK ANNOTATION:
 MARK:<index>
 UNMARK:<index>
 
-FOR TASK SEARCH BY KEYWORD:
+FOR TASK SEARCH:
 FIND:<keyword>
-
-FOR TASK SEARCH BY INDEX:
 FIND_INDEX:<index>
 LIST:No requirements to this command
 
 FOR MISCELLANEOUS FUNCTIONALITIES:
-HELP:No requirements to this command
+HELP:<keyword> or no requirements to this command
 BYE:No requirements to this command
 ____________________________________________________________
 You have no tasks in your list.
@@ -134,15 +132,13 @@ FOR TASK ANNOTATION:
 MARK:<index>
 UNMARK:<index>
 
-FOR TASK SEARCH BY KEYWORD:
+FOR TASK SEARCH:
 FIND:<keyword>
-
-FOR TASK SEARCH BY INDEX:
 FIND_INDEX:<index>
 LIST:No requirements to this command
 
 FOR MISCELLANEOUS FUNCTIONALITIES:
-HELP:No requirements to this command
+HELP:<keyword> or no requirements to this command
 BYE:No requirements to this command
 ____________________________________________________________
 Bye! Hope to see you again soon!

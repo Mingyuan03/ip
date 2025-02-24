@@ -15,7 +15,7 @@ public enum Help {
     FIND("<keyword>"),
     FIND_INDEX("<index>"),
     LIST,
-    HELP,
+    HELP("<keyword> or no requirements to this command"),
     BYE;
 
     private final String commandFormat;
@@ -58,9 +58,7 @@ public enum Help {
             } else if (help.equals(MARK)) {
                 fullHelp.append("\nFOR TASK ANNOTATION:\n");
             } else if (help.equals(FIND)) {
-                fullHelp.append("\nFOR TASK SEARCH BY KEYWORD:\n");
-            } else if (help.equals(FIND_INDEX)) {
-                fullHelp.append("\nFOR TASK SEARCH BY INDEX:\n");
+                fullHelp.append("\nFOR TASK SEARCH:\n");
             } else if (help.equals(HELP)) {
                 fullHelp.append("\nFOR MISCELLANEOUS FUNCTIONALITIES:\n");
             }
