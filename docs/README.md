@@ -5,7 +5,7 @@ Whether you're juggling assignment deadlines in JC, hackathon project TODOs in p
 YasuMax keeps you on track for a stress-free academic life!
 ---
 ## Why YasuMax? 🤔
-"Yasu" means peace in Japanese, and BayMax is the gentle giant (*~awww~*) we all adored in Disney's Big Hero 6 (2014).<br>
+"Yasu" means peace in Japanese, and BayMax is the gentle giant (*~aww~*) we all adored in Disney's Big Hero 6 (2014).<br>
 When school feels overwhelming and tasks seem endless, we yearn for a reliable companion to assist us.<br>
 While BayMax isn't real...YasuMax is! Try it below and call it your dedicated study buddy today!
 ---
@@ -38,13 +38,13 @@ While BayMax isn't real...YasuMax is! Try it below and call it your dedicated st
 You can check your Java version on any OS by running in your terminal: `java -version`
 2. Navigate to the [YasuMax GitHub Releases](https://github.com/Mingyuan03/ip/releases) page.
 3. Download the latest `YasuMax.jar` file to a local home directory of your choice.
-4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode ![here](./Start.png).
+4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode ![here](images/Start.png).
 ---
 ## Quick Demo
-1. Type `help` in GUI mode for all available commands alongside their formats. A resizable pop-up window should appear:![here](./help.png)
+1. Type `help` in GUI mode for all available commands alongside their formats. A resizable pop-up window should appear:![here](images/Help.png)
    1. Take note that this pop-up window must be closed explicitly to ensure you have read through them thoroughly!
    2. `YasuMax` allows you to further customise your `help` by specifying 1 additional command to get its format!<b>
-   E.g.: Running `help help` (which is distinct from `help`!) should render:![here](./help-help.png)
+   E.g.: Running `help help` (which is distinct from `help`!) should render:![here](images/Help-help.png)
 2. Try out the following sample commands in sequence:
    ```
    help help
@@ -62,12 +62,12 @@ You can check your Java version on any OS by running in your terminal: `java -ve
    clear
    bye
 3. Ensure you get the result for Step 2 as depicted in the 6 images below:
-   ![sample-1](./sample-1.png)<b>
-   ![sample-2](./sample-2.png)<b>
-   ![sample-3](./sample-3.png)<b>
-   ![sample-4](./sample-4.png)<b>
-   ![sample-5](./sample-5.png)<b>
-   ![sample-6](./sample-6.png)<b>
+   ![sample-1](images/Sample-1.png)<b>
+   ![sample-2](images/Sample-2.png)<b>
+   ![sample-3](images/Sample-3.png)<b>
+   ![sample-4](images/Sample-4.png)<b>
+   ![sample-5](images/Sample-5.png)<b>
+   ![sample-6](images/Sample-6.png)<b>
 4. You are good to go, captain!
 ---
 ## Features
@@ -86,7 +86,7 @@ You can check your Java version on any OS by running in your terminal: `java -ve
   - Description and both datetime cannot be empty, else `YasuMax` kindly gives a `event` custom help message
   akin to `help event`.
   - Both datetime cannot be invalid, else `YasuMax` kindly gives a list of valid ISO8601-like datetime it recognises,
-  as seen here: ![here](./invalid-datetime.png)
+  as seen here: ![here](images/Invalid-datetime.png)
 ### Deleting a task by insertion index:
 - Format: `delete [index]`
 - Notes 📝:
