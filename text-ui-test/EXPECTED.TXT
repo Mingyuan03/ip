@@ -1,4 +1,4 @@
-Hello! I'm ShinpaiMax, your personal study companion!
+Hello! I'm YasuMax, your personal study companion!
 What can I do for you?
 ____________________________________________________________
 You typed an invalid command!
@@ -117,7 +117,7 @@ You have no tasks in your list.
 ____________________________________________________________
 Oops! There are no matching tasks for keyword: 0
 ____________________________________________________________
-Hello! I'm ShinpaiMax, your personal study companion!
+Hello! I'm YasuMax, your personal study companion!
 I am here to assist you.
 
 Valid commands alongside their formats are:

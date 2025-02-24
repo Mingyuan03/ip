@@ -24,9 +24,16 @@ public class DialogueBox extends HBox {
     @FXML
     private ImageView displayImage;
 
-    private final String dialogueString; // Separate out initialize() method for better structuring.
-    private final Image image; // Separate out initialize() method for better structuring.
+    private final String dialogueString;
+    private final Image image;
 
+    /**
+     * Instantiate new speech bubble for either user's input or bot's output.
+     * This common constructor for both user and bot speech bubble is encapsulated to limit speech bubble generation in
+     * GUI-mode to solely user xor bot, thereby minimising misuse.
+     * @param newDialogue Text String being either user's input or bot's output.
+     * @param newImage Avatar image being either user's caricature or bot's caricature.
+     */
     private DialogueBox(String newDialogue, Image newImage) {
         assert newDialogue != null : "newDialogue text cannot be null";
         this.dialogueString = newDialogue;
@@ -45,7 +52,7 @@ public class DialogueBox extends HBox {
     }
 
     /**
-     * Set dialogueBox text and image automatically after FXML file loading and injection of UI components.
+     * Inject 2 local FXML UI components after instantiation, namely this::dialogue and this::displayImage.
      * <p> Add assertions to guarantee both dialogue text and image view are initialised before this call. </p>
      */
     @FXML
@@ -57,8 +64,7 @@ public class DialogueBox extends HBox {
     }
 
     /**
-     * Reflect dialogueBox and image order, and realign UI components to opposite horizontal end of scrollPane for
-     * user dialogueBox vs ShinpaiMax bot dialogueBox.
+     * Swap speech bubble and avatar's rendering order, and realign the speech bubble, for bot's output to left side.
      */
     @FXML
     public void flip() {
@@ -71,22 +77,22 @@ public class DialogueBox extends HBox {
     }
 
     /**
-     * Instantiate new user dialogueBox, better encapsulating private constructor for MainWindow.java.
-     * @param newDialogue Custom user descriptionString to render in GUI mode.
-     * @param newImage User image.
-     * @return user dialogueBox.
+     * Instantiate new speech bubble for user's input.
+     * @param newDialogue User's text string.
+     * @param newImage User's avatar.
+     * @return User's speech bubble in GUI-mode.
      */
     public static DialogueBox showUserDialogueBox(String newDialogue, Image newImage) {
         return new DialogueBox(newDialogue, newImage);
     }
 
     /**
-     * Instantiate new ShinpaiMax bot dialogueBox, better encapsulating private constructor for MainWindow.java.
-     * @param newDialogue Custom corresponding ShinpaiMax bot response to preceding user descriptionString.
-     * @param newImage ShinpaiMax bot image.
-     * @return ShinpaiMax bot dialogueBox.
+     * Instantiate new speech bubble for bot's output.
+     * @param newDialogue Bot's text response.
+     * @param newImage Bot's avatar.
+     * @return Bot's speech bubble in GUI-mode.
      */
-    public static DialogueBox showShinpaiMaxDialogueBox(String newDialogue, Image newImage) {
+    public static DialogueBox showYasuMaxDialogueBox(String newDialogue, Image newImage) {
         DialogueBox dialogueBox = new DialogueBox(newDialogue, newImage);
         dialogueBox.flip();
         return dialogueBox;

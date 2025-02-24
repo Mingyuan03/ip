@@ -23,13 +23,13 @@
     -fx-min-height: 10px;
 }
 
-/* Specific add-on/overriding style for ShinpaiMax bot dialogueBoxes. */
+/* Specific add-on/overriding style for YasuMax bot dialogueBoxes. */
 .dialogue-box.reply {
     -fx-background-color: lightgreen; /* Override base dialogueBox's color for bot's response messages. */
     -fx-padding: 10px;
 }
 
-/* Specific add-on/overriding style for ShinpaiMax bot dialogueBox's tail, compiling via solely CSC CSS. */
+/* Specific add-on/overriding style for YasuMax bot dialogueBox's tail, compiling via solely CSC CSS. */
 .reply-tail {
     -fx-shape: "M 10 0 L 0 5 L 10 10 Z"; /* Create a small left-facing triangle */
     -fx-background-color: lightgreen;
@@ -47,7 +47,7 @@
     -fx-padding: 6px 10px;
 }
 
-/* Style for text label inside ShinpaiMax bot dialogueBoxes, independent of style in .dialogue-box above. */
+/* Style for text label inside YasuMax bot dialogueBoxes, independent of style in .dialogue-box above. */
 .reply-label {
     -fx-background-radius: 15px 15px 15px 5px;
     -fx-border-radius: 15px 15px 15px 5px;

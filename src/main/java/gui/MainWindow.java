@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import shinpaimax.ShinpaiMax;
+import yasumax.YasuMax;
 
 /**
  * @author Lu Mingyuan
@@ -27,14 +27,14 @@ public class MainWindow extends AnchorPane {
     private Button searchButton;
 
     private final Image userImage = new Image(Objects.requireNonNull(
-            getClass().getResourceAsStream("/images/User.png")));
-    private final Image shinpaiMaxImage = new Image(Objects.requireNonNull(
-            getClass().getResourceAsStream("/images/ShinpaiMax.png")));
-    private ShinpaiMax shinpaiMax;
+            getClass().getResourceAsStream("/images/Hiro.png")));
+    private final Image yasuMaxImage = new Image(Objects.requireNonNull(
+            getClass().getResourceAsStream("/images/YasuMax.png")));
+    private YasuMax yasuMax;
 
     /**
-     * Bind scrollPane to dialogueContainer for scrolling beyond margins of scrollPane,
-     * and program lazily searchButton to correctly execute on being clicked explicitly vs hovering/automatic.
+     * Enable dynamic scrolling of main window as dialogues exceed its margins; implement stopgap colour designation for
+     * background of main window, and programme search button to enter user's input only if explicitly clicked/entered.
      */
     @FXML
     public void initialize() {
@@ -44,27 +44,18 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Instantiate ShinpaiMax object solely in GUI mode (identical to in CLI mode) and bundle load functionality.
-     * @param shinpaiMax instance.
+     * Bundle new bot's instantiation and cache load in GUI-mode only.
+     * @param yasuMax New bot instance.
      */
-    public void setShinpaiMax(ShinpaiMax shinpaiMax) {
-        this.shinpaiMax = shinpaiMax;
-        this.loadPreviousSession(); // Previous Session could be independently in CLI and/or GUI mode.
-    }
-
-    /**
-     * Load from cache past data for persistence.
-     */
-    private void loadPreviousSession() {
+    public void setYasuMax(YasuMax yasuMax) {
+        this.yasuMax = yasuMax;
         this.dialogueContainer.getChildren().add(
-                DialogueBox.showShinpaiMaxDialogueBox(this.shinpaiMax.loadTasksFromCache(), this.shinpaiMaxImage)
-        );
+                DialogueBox.showYasuMaxDialogueBox(this.yasuMax.loadTasksFromCache(), this.yasuMaxImage));
     }
 
     /**
-     * Render each pair of custom user descriptionString and ShinpaiMax bot's response, alongside their images,
-     * as a pair of dialogueBoxes simultaneously rendered correctly solely in GUI mode, while handling "bye" command
-     * like CLI mode's ShinpaiMax::execute guard block.
+     * Generate bot's speech bubble output like CLI-mode's this::execute, providing custom help message handling and
+     * program termination via `bye` command.
      */
     @FXML
     public void handleUserInput() {
@@ -73,22 +64,22 @@ public class MainWindow extends AnchorPane {
         if (searchInput.equals("bye")) {
             this.dialogueContainer.getChildren().addAll(
                     DialogueBox.showUserDialogueBox(searchInput, this.userImage),
-                    DialogueBox.showShinpaiMaxDialogueBox(this.shinpaiMax.saveTasksToCache(), this.shinpaiMaxImage)
+                    DialogueBox.showYasuMaxDialogueBox(this.yasuMax.saveTasksToCache(), this.yasuMaxImage)
             );
             Platform.exit(); // Terminate on reaching exit command
             return;
         }
-        String[] shinpaiMaxOutput = this.shinpaiMax.processCommandByMap(searchInput);
-        assert shinpaiMaxOutput.length == 2
-                : "Error in processing user input: shinpaimax bot must output only response and whether help is needed";
-        if (shinpaiMaxOutput[1].equals("true")) {
+        String[] yasuMaxOutput = this.yasuMax.processCommandByMap(searchInput);
+        assert yasuMaxOutput.length == 2
+                : "Error in processing user input: yasumax bot must output only response and whether help is needed";
+        if (yasuMaxOutput[1].equals("true")) {
             // this.dialogueContainer.getChildren().add(DialogueBox.showUserDialogueBox(searchInput, this.userImage));
-            new HelpBox(shinpaiMaxOutput[0]).showAndWait();
+            new HelpBox(yasuMaxOutput[0]).showAndWait();
             return;
         }
         this.dialogueContainer.getChildren().addAll(
                 DialogueBox.showUserDialogueBox(searchInput, this.userImage),
-                DialogueBox.showShinpaiMaxDialogueBox(shinpaiMaxOutput[0], this.shinpaiMaxImage)
+                DialogueBox.showYasuMaxDialogueBox(yasuMaxOutput[0], this.yasuMaxImage)
         );
     }
 }

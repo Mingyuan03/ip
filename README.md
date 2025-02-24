@@ -3,7 +3,7 @@
 # SteadyLah project template
 
 This is a project template for a greenfield Java project.
-While it's initially named after the Java mascot _Duke_, the owner of this project has renamed it to _SteadyLah!_,
+While it's initially named after the Java mascot _Duke_, the owner of this project has renamed it to _YasuMax!_,
 an ingenious twist to fit its primary purpose of helping students schedule their academic commitments on-time
 while staying true to the local Singlish vernacular! Given below are instructions on how to use it.
 
