@@ -1,6 +1,5 @@
 package yasumax.task;
 
-import java.time.DateTimeException;
 import java.time.LocalDateTime;
 
 import yasumax.command.Help;
@@ -8,6 +7,7 @@ import yasumax.datetime.Datetime;
 import yasumax.exception.EmptyDescriptionException;
 import yasumax.exception.EmptyTimeException;
 import yasumax.exception.InvalidCommandException;
+import yasumax.exception.InvalidDateTimeException;
 
 /**
  * @author Lu Mingyuan
@@ -36,7 +36,7 @@ public class Deadline extends Task {
         // Default byTime chosen as 23:59, the most common deadline in academic settings
         this.byTime = Datetime.parseDateTime(byString)
                 .or(() -> Datetime.parseDate(byString).map(date -> date.atTime(23, 59)))
-                .orElseThrow(() -> new DateTimeException("Invalid datetime format"));
+                .orElseThrow(() -> new InvalidDateTimeException());
     }
 
     /**

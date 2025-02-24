@@ -1,5 +1,7 @@
 package yasumax.exception;
 
+import yasumax.datetime.Datetime;
+
 /**
  * Handle missing or space-only time field for Task initialisation.
  * @author Lu Mingyuan
@@ -7,6 +9,6 @@ package yasumax.exception;
  */
 public class EmptyTimeException extends YasuMaxException {
     public EmptyTimeException() {
-        super("Time must not be empty for task insertion!");
+        super("Time must not be empty for task insertion!" + Datetime.getFullDateTime());
     }
 }

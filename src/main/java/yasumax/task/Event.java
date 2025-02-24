@@ -1,6 +1,5 @@
 package yasumax.task;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -9,6 +8,7 @@ import yasumax.datetime.Datetime;
 import yasumax.exception.EmptyDescriptionException;
 import yasumax.exception.EmptyTimeException;
 import yasumax.exception.InvalidCommandException;
+import yasumax.exception.InvalidDateTimeException;
 
 /**
  * @author Lu Mingyuan
@@ -41,11 +41,11 @@ public class Event extends Task {
         // Default startTime chosen as 00:00, the most common startTime in academic settings
         this.startTime = Datetime.parseDateTime(startString)
                 .or(() -> Datetime.parseDate(startString).map(LocalDate::atStartOfDay))
-                .orElseThrow(() -> new DateTimeException("Invalid datetime format"));
+                .orElseThrow(() -> new InvalidDateTimeException());
         // Default endTime chosen as 23:59, the most common endTime in academic settings
         this.endTime = Datetime.parseDateTime(endString)
                 .or(() -> Datetime.parseDate(endString).map(date -> date.atTime(23, 59)))
-                .orElseThrow(() -> new DateTimeException("Invalid datetime format"));
+                .orElseThrow(() -> new InvalidDateTimeException());
     }
 
     /**

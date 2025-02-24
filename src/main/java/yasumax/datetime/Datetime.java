@@ -72,4 +72,18 @@ public enum Datetime {
         }
         return Optional.empty();
     }
+
+    /**
+     * Print to console in CLI-mode, xor display in GUI-mode, all datetime format Strings recognised by bot if user
+     * encounters InvalidDateTimeException or EmptyTimeException being thrown.
+     * @return All datetime format Strings recognised by bot.
+     */
+    public static String getFullDateTime() {
+        StringBuilder dateTimeResponse = new StringBuilder();
+        LocalDateTime now = LocalDateTime.now();
+        for (Datetime format : Datetime.values()) {
+            dateTimeResponse.append(now.format(format.formatter)).append("\n");
+        }
+        return dateTimeResponse.substring(0, dateTimeResponse.length() - 1);
+    }
 }
