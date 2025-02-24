@@ -24,7 +24,7 @@ public class HelpBox extends Stage {
     /**
      * Instantiate pop-up window to render custom help message, guiding users how to properly operate app in GUI mode,
      * while guaranteeing user must fully understand and explicitly close the window before further dialogues can ensue.
-     * @param helpMessage custom steadyLah bot help message.
+     * @param helpMessage custom ShinpaiMax bot help message.
      */
     public HelpBox(String helpMessage) {
         try {
@@ -51,8 +51,8 @@ public class HelpBox extends Stage {
     }
 
     /**
-     * Render custom steadyLah bot help message in window as a String text in VBox-typed pop-up window instance.
-     * @param helpMessage custom steadyLah bot help message.
+     * Render custom ShinpaiMax bot help message in window as a String text in VBox-typed pop-up window instance.
+     * @param helpMessage custom ShinpaiMax bot help message.
      */
     private void setHelpMessage(String helpMessage) {
         this.helpMessage.setText(helpMessage);

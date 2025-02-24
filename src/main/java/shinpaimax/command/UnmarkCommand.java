@@ -1,0 +1,29 @@
+package shinpaimax.command;
+
+import shinpaimax.exception.InvalidIntegerException;
+import shinpaimax.storage.Storage;
+import shinpaimax.task.TaskList;
+import shinpaimax.ui.Ui;
+
+/**
+ * @author Lu Mingyuan
+ * @version v1.0.0-alpha
+ */
+public class UnmarkCommand extends Command {
+    /**
+     * Instantiate an unmark command which calls TaskList::unmarkTask via execute method.
+     * @param contentInput raw end-user String content.
+     */
+    public UnmarkCommand(String contentInput) {
+        super(contentInput);
+    }
+
+    @Override
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        try {
+            return taskList.unmarkTask(Integer.parseInt(this.contentInput.trim().split(" ")[0]));
+        } catch (InvalidIntegerException e) {
+            throw new InvalidIntegerException(this.contentInput);
+        }
+    }
+}

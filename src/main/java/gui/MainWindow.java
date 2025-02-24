@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import steadylah.SteadyLah;
+import shinpaimax.ShinpaiMax;
 
 /**
  * @author Lu Mingyuan
@@ -28,9 +28,9 @@ public class MainWindow extends AnchorPane {
 
     private final Image userImage = new Image(Objects.requireNonNull(
             getClass().getResourceAsStream("/images/User.png")));
-    private final Image steadyLahImage = new Image(Objects.requireNonNull(
-            getClass().getResourceAsStream("/images/SteadyLah.png")));
-    private SteadyLah steadyLah;
+    private final Image shinpaiMaxImage = new Image(Objects.requireNonNull(
+            getClass().getResourceAsStream("/images/ShinpaiMax.png")));
+    private ShinpaiMax shinpaiMax;
 
     /**
      * Bind scrollPane to dialogueContainer for scrolling beyond margins of scrollPane,
@@ -39,15 +39,16 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         this.scrollPane.vvalueProperty().bind(this.dialogueContainer.heightProperty());
+        this.setStyle("-fx-background-color: linear-gradient(to bottom right, #EF7C00, #003D7C);");
         this.searchButton.setOnAction(clickEvent -> handleUserInput());
     }
 
     /**
-     * Instantiate steadyLah object solely in GUI mode (identical to in CLI mode) and bundle load functionality.
-     * @param steadyLah new steadyLah instance.
+     * Instantiate ShinpaiMax object solely in GUI mode (identical to in CLI mode) and bundle load functionality.
+     * @param shinpaiMax instance.
      */
-    public void setSteadyLah(SteadyLah steadyLah) {
-        this.steadyLah = steadyLah;
+    public void setShinpaiMax(ShinpaiMax shinpaiMax) {
+        this.shinpaiMax = shinpaiMax;
         this.loadPreviousSession(); // Previous Session could be independently in CLI and/or GUI mode.
     }
 
@@ -56,14 +57,14 @@ public class MainWindow extends AnchorPane {
      */
     private void loadPreviousSession() {
         this.dialogueContainer.getChildren().add(
-                DialogueBox.showSteadyLahDialogueBox(this.steadyLah.loadTasksFromCache(), this.steadyLahImage)
+                DialogueBox.showShinpaiMaxDialogueBox(this.shinpaiMax.loadTasksFromCache(), this.shinpaiMaxImage)
         );
     }
 
     /**
-     * Render each pair of custom user descriptionString and steadyLah bot's response, alongside their images,
+     * Render each pair of custom user descriptionString and ShinpaiMax bot's response, alongside their images,
      * as a pair of dialogueBoxes simultaneously rendered correctly solely in GUI mode, while handling "bye" command
-     * like CLI mode's steadyLah::execute guard block.
+     * like CLI mode's ShinpaiMax::execute guard block.
      */
     @FXML
     public void handleUserInput() {
@@ -72,22 +73,22 @@ public class MainWindow extends AnchorPane {
         if (searchInput.equals("bye")) {
             this.dialogueContainer.getChildren().addAll(
                     DialogueBox.showUserDialogueBox(searchInput, this.userImage),
-                    DialogueBox.showSteadyLahDialogueBox(this.steadyLah.saveTasksToCache(), this.steadyLahImage)
+                    DialogueBox.showShinpaiMaxDialogueBox(this.shinpaiMax.saveTasksToCache(), this.shinpaiMaxImage)
             );
             Platform.exit(); // Terminate on reaching exit command
             return;
         }
-        String[] steadyLahOutput = this.steadyLah.processCommandByMap(searchInput);
-        assert steadyLahOutput.length == 2
-                : "Error in processing user input: steadyLah bot must output only response and whether help is needed";
-        if (steadyLahOutput[1].equals("true")) {
+        String[] shinpaiMaxOutput = this.shinpaiMax.processCommandByMap(searchInput);
+        assert shinpaiMaxOutput.length == 2
+                : "Error in processing user input: shinpaimax bot must output only response and whether help is needed";
+        if (shinpaiMaxOutput[1].equals("true")) {
             // this.dialogueContainer.getChildren().add(DialogueBox.showUserDialogueBox(searchInput, this.userImage));
-            new HelpBox(steadyLahOutput[0]).showAndWait();
+            new HelpBox(shinpaiMaxOutput[0]).showAndWait();
             return;
         }
         this.dialogueContainer.getChildren().addAll(
                 DialogueBox.showUserDialogueBox(searchInput, this.userImage),
-                DialogueBox.showSteadyLahDialogueBox(steadyLahOutput[0], this.steadyLahImage)
+                DialogueBox.showShinpaiMaxDialogueBox(shinpaiMaxOutput[0], this.shinpaiMaxImage)
         );
     }
 }

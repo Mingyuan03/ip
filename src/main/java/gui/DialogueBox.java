@@ -58,7 +58,7 @@ public class DialogueBox extends HBox {
 
     /**
      * Reflect dialogueBox and image order, and realign UI components to opposite horizontal end of scrollPane for
-     * user dialogueBox vs steadyLah bot dialogueBox.
+     * user dialogueBox vs ShinpaiMax bot dialogueBox.
      */
     @FXML
     public void flip() {
@@ -81,12 +81,12 @@ public class DialogueBox extends HBox {
     }
 
     /**
-     * Instantiate new steadyLah bot dialogueBox, better encapsulating private constructor for MainWindow.java.
-     * @param newDialogue Custom corresponding steadyLah bot response to preceding user descriptionString.
-     * @param newImage steadyLah bot image.
-     * @return steadyLah bot dialogueBox.
+     * Instantiate new ShinpaiMax bot dialogueBox, better encapsulating private constructor for MainWindow.java.
+     * @param newDialogue Custom corresponding ShinpaiMax bot response to preceding user descriptionString.
+     * @param newImage ShinpaiMax bot image.
+     * @return ShinpaiMax bot dialogueBox.
      */
-    public static DialogueBox showSteadyLahDialogueBox(String newDialogue, Image newImage) {
+    public static DialogueBox showShinpaiMaxDialogueBox(String newDialogue, Image newImage) {
         DialogueBox dialogueBox = new DialogueBox(newDialogue, newImage);
         dialogueBox.flip();
         return dialogueBox;

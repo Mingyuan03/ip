@@ -7,14 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import steadylah.SteadyLah;
+import shinpaimax.ShinpaiMax;
 
 /**
  * @author Lu Mingyuan
  * @version v1.0.0-alpha
  */
 public class Gui extends Application {
-    private final SteadyLah steadyLah = new SteadyLah();
+    private final ShinpaiMax shinpaiMax = new ShinpaiMax();
 
     @Override
     public void start(Stage stage) {
@@ -23,8 +23,8 @@ public class Gui extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            stage.setTitle("Schedule your acads with SteadyLah!");
-            fxmlLoader.<MainWindow>getController().setSteadyLah(this.steadyLah);
+            stage.setTitle("ShinpaiMax, your personal study companion!");
+            fxmlLoader.<MainWindow>getController().setShinpaiMax(this.shinpaiMax);
             stage.show();
         } catch (IOException e) {
             System.err.println("IOException: " + e);

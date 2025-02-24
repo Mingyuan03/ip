@@ -56,12 +56,12 @@ test {
 }
 
 application {
-    mainClass.set("gui.Launcher") // Modified from initial "seedu.duke.Main", then "steadylah.SteadyLah"
+    mainClass.set("gui.Launcher") // Modified from initial "seedu.duke.Main"
 }
 
 shadowJar {
-    archiveFileName = "steadylah.jar"
-    archiveBaseName = "steadylah"
+    archiveFileName = "shinpaimax.jar"
+    archiveBaseName = "shinpaimax"
     archiveClassifier = null
 }
 
