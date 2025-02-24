@@ -1,0 +1,26 @@
+.help-box {
+    -fx-background-color: linear-gradient(to bottom right, #EF7C00, #003D7C);
+    -fx-border-color: gold;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-font-weight: bold;
+}
+
+.help-message {
+    -fx-background-color: linear-gradient(to bottom right, #EF7C00, #003D7C);
+    -fx-text-fill: snow;
+    -fx-alignment: CENTER;
+    -fx-wrap-text: true;
+}
+
+.exit-button {
+    -fx-background-color: skyblue;
+    -fx-text-fill: snow;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.exit-button:hover {
+    -fx-background-color: blue;
+}

@@ -47,8 +47,7 @@ public enum Help {
             } else if (help.equals(HELP)) {
                 fullHelp.append("\nFOR MISCELLANEOUS FUNCTIONALITIES:\n");
             }
-            fullHelp.append(help).append(":");
-            fullHelp.append(help.getSpecificHelp());
+            fullHelp.append(help).append(":").append(help.getSpecificHelp());
             if (!help.equals(Help.BYE)) {
                 fullHelp.append("\n");
             }

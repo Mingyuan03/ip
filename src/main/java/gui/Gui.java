@@ -23,6 +23,7 @@ public class Gui extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            stage.setTitle("Schedule your acads with SteadyLah!");
             fxmlLoader.<MainWindow>getController().setSteadyLah(this.steadyLah);
             stage.show();
         } catch (IOException e) {

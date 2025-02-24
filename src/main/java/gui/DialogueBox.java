@@ -34,7 +34,7 @@ public class DialogueBox extends HBox {
         this.image = newImage;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogueBox.fxml"));
-            assert fxmlLoader.getLocation() != null : "DialogueBox.fxml absent in ../resources/view/DialogueBox.fxml";
+            assert fxmlLoader.getLocation() != null : "DialogueBox.fxml absent in ../resources/view";
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
