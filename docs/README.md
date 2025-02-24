@@ -38,10 +38,10 @@ While BayMax isn't real...YasuMax is! Try it below and call it your dedicated st
 You can check your Java version on any OS by running in your terminal: `java -version`
 2. Navigate to the [YasuMax GitHub Releases](https://github.com/Mingyuan03/ip/releases) page.
 3. Download the latest `YasuMax.jar` file to a local home directory of your choice.
-4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode ![here]
+4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode ![here](./Start.png).
 
 ## Quick Demo
-1. Type `help` in GUI mode for all available commands alongside their formats. A resizable pop-up window should appear:
+1. Type `help` in GUI mode for all available commands alongside their formats. A resizable pop-up window should appear:![here](./help.png)
    1. Take note that this pop-up window must be closed explicitly to ensure you have read through them thoroughly!
    2. `YasuMax` allows you to further customise your `help` by specifying 1 additional command to get its format! E.g.:
 2. Try out the following sample commands in sequence:
@@ -62,11 +62,11 @@ You can check your Java version on any OS by running in your terminal: `java -ve
    bye
 3. Ensure you get the result for Step 2 as depicted in the 6 images below:
    ![sample-1](./sample-1.png)<b>
-   ![sample-2](https://Mingyuan03.github.io/ip/docs/sample-2.png)<b>
-   ![sample-3](https://Mingyuan03.github.io/ip/docs/sample-3.png)<b>
-   ![sample-4](https://Mingyuan03.github.io/ip/docs/sample-4.png)<b>
-   ![sample-5](https://Mingyuan03.github.io/ip/docs/sample-5.png)<b>
-   ![sample-6](https://Mingyuan03.github.io/ip/docs/sample-6.png)<b>
+   ![sample-2](./sample-2.png)<b>
+   ![sample-3](./sample-3.png)<b>
+   ![sample-4](./sample-4.png)<b>
+   ![sample-5](./sample-5.png)<b>
+   ![sample-6](./sample-6.png)<b>
 4. You are good to go, captain!
 
 
