@@ -1,4 +1,4 @@
-## YasuMax (安Max) - Your Personal Study Companion! 🧑‍🎓👩‍🎓
+# YasuMax (安Max) - Your Personal Study Companion! 🧑‍🎓👩‍🎓
 YasuMax is a user-friendly academic task tracker designed to help students manage their study commitments with ease.<br>
 It is optimised for use via a **Command Line Interface** (CLI) while having a nice *Graphical User Interface* (GUI).<br>
 Whether you're juggling assignment deadlines in JC, hackathon project TODOs in poly, or your upcoming university FYPs,
@@ -36,9 +36,9 @@ While BayMax isn't real...YasuMax is! Try it below and call it your dedicated st
 1. Ensure you have Java `17` or above installed in your Computer.<br>
 **Mac users:** Ensure you have the precise JDK version [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).<br>
 You can check your Java version on any OS by running in your terminal: `java -version`
-2. Navigate to the [YasuMax GitHub Releases]() page.
+2. Navigate to the [YasuMax GitHub Releases](https://github.com/Mingyuan03/ip/releases) page.
 3. Download the latest `YasuMax.jar` file to a local home directory of your choice.
-4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode!
+4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode ![here](/Start.png)
 
 ## Quick Demo
 1. Type `help` in GUI mode for all available commands alongside their formats. A resizable pop-up window should appear:
