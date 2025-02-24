@@ -61,12 +61,12 @@ You can check your Java version on any OS by running in your terminal: `java -ve
    clear
    bye
 3. Ensure you get the result for Step 2 as depicted in the 6 images below:
-   ![sample-1]<b>
-   ![sample-2]<b>
-   ![sample-3]<b>
-   ![sample-4]<b>
-   ![sample-5]<b>
-   ![sample-6]<b>
+   ![sample-1](https://Mingyuan03.github.io/ip/docs/sample-1.png)<b>
+   ![sample-2](https://Mingyuan03.github.io/ip/docs/sample-2.png)<b>
+   ![sample-3](https://Mingyuan03.github.io/ip/docs/sample-3.png)<b>
+   ![sample-4](https://Mingyuan03.github.io/ip/docs/sample-4.png)<b>
+   ![sample-5](https://Mingyuan03.github.io/ip/docs/sample-5.png)<b>
+   ![sample-6](https://Mingyuan03.github.io/ip/docs/sample-6.png)<b>
 4. You are good to go, captain!
 
 
