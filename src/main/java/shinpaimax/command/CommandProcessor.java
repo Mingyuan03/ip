@@ -18,6 +18,7 @@ public class CommandProcessor {
         COMMAND_MAP.put("event", EventCommand.class);
         COMMAND_MAP.put("todo", ToDoCommand.class);
         COMMAND_MAP.put("delete", DeleteCommand.class);
+        COMMAND_MAP.put("clear", ClearCommand.class);
         COMMAND_MAP.put("mark", MarkCommand.class);
         COMMAND_MAP.put("unmark", UnmarkCommand.class);
         COMMAND_MAP.put("list", ListCommand.class);

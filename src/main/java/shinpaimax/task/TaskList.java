@@ -91,6 +91,19 @@ public class TaskList {
     }
 
     /**
+     * Remove all task(s) from taskList.
+     */
+    public String deleteAllTasks() {
+        if (this.taskLogs.isEmpty()) {
+            throw new EmptyTaskListException();
+        }
+        String deleteAllResponse = this.taskLogs.size() > 1 ? "Noted. I've removed all tasks."
+            : "Noted. I've removed the last remaining task.";
+        this.taskLogs.clear();
+        return deleteAllResponse;
+    }
+
+    /**
      * Toggle status of task in taskList field from Undone to Done.
      * @param index 1-indexed task location.
      */

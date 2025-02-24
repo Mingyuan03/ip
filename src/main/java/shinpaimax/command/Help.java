@@ -9,6 +9,7 @@ public enum Help {
     EVENT("description> /from <time> /to <time>"),
     TODO("<description>"),
     DELETE("<index>"),
+    CLEAR,
     MARK("<index>"),
     UNMARK("<index>"),
     FIND("<keyword>"),

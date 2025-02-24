@@ -11,6 +11,7 @@ TODO:<description>
 
 FOR TASK DELETION:
 DELETE:<index>
+CLEAR:No requirements to this command
 
 FOR TASK ANNOTATION:
 MARK:<index>
@@ -127,6 +128,7 @@ TODO:<description>
 
 FOR TASK DELETION:
 DELETE:<index>
+CLEAR:No requirements to this command
 
 FOR TASK ANNOTATION:
 MARK:<index>
