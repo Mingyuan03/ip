@@ -9,7 +9,7 @@ YasuMax keeps you on track for a stress-free academic life!
 When school feels overwhelming and tasks seem endless, we yearn for a reliable companion to assist us.<br>
 While BayMax isn't real...YasuMax is! Try it below and call it your dedicated study buddy today!
 ---
-## User Guide Sections
+## User Guide Summary
 - Installation Guide
 - Quick Demo
 - Features
