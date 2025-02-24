@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 
 import steadylah.command.Command;
 import steadylah.command.CommandProcessor;
+import steadylah.command.HelpCommand;
+import steadylah.exception.InvalidCommandException;
 import steadylah.exception.SteadyLahException;
 import steadylah.storage.Storage;
 import steadylah.task.TaskList;
@@ -27,27 +29,26 @@ public class SteadyLah {
      * @param rawInput Human-user descriptionString input.
      * @return Response String to be displayed directly in GUI mode.
      */
-    private String processCommandByMap(String rawInput) {
+    public String[] processCommandByMap(String rawInput) {
         try {
             Command command = CommandProcessor.processCommandByMap(rawInput);
-            return command.execute(this.taskList, this.ui, this.storage); // Need command::execute return String.
+            // command::execute needs to return String always for GUI-mode compatibility.
+            return new String[]{
+                    command.execute(this.taskList, this.ui, this.storage),
+                    String.valueOf(command instanceof HelpCommand)
+            };
+        } catch (InvalidCommandException e) {
+            // Separation of concern for this exception vs SteadyLahException subclasses for more scalability lest
+            // future project increments customise exception-handling to no longer respond with a help message.
+            return new String[]{e.getMessage(), "true"};
         } catch (SteadyLahException e) {
-            return e.getMessage();
+            return new String[]{e.getMessage(), "false"};
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException
                  | IllegalAccessException e) {
-            return "Error in processing command: " + e.getMessage();
+            return new String[]{"Error in processing command: " + e.getMessage(), "false"};
         } catch (RuntimeException e) {
-            return "A wild runtime exception occurred: " + e.getMessage();
+            return new String[]{"A wild runtime exception occurred: " + e.getMessage(), "false"};
         }
-    }
-
-    /**
-     * Retrieve a response from new SteadyLah()::processCommand to display in GUI mode.
-     * @param rawInput Human-user descriptionString input.
-     * @return Response String to be displayed directly in GUI mode.
-     */
-    public String getResponse(String rawInput) {
-        return this.processCommandByMap(rawInput);
     }
 
     /**
@@ -85,8 +86,8 @@ public class SteadyLah {
                 this.storage.saveToCache(this.taskList);
                 break;
             }
-            String response = this.processCommandByMap(rawInput);
-            System.out.println(response); // Print response for CLI mode.
+            String[] response = this.processCommandByMap(rawInput);
+            System.out.println(response[0]); // Print response for CLI mode.
             this.ui.printDelimiter();
         }
     }

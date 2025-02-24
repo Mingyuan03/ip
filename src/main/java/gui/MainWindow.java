@@ -68,6 +68,7 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void handleUserInput() {
         String searchInput = this.searchBox.getText().trim();
+        this.searchBox.clear();
         if (searchInput.equals("bye")) {
             this.dialogueContainer.getChildren().addAll(
                     DialogueBox.showUserDialogueBox(searchInput, this.userImage),
@@ -76,14 +77,17 @@ public class MainWindow extends AnchorPane {
             Platform.exit(); // Terminate on reaching exit command
             return;
         }
-        String steadyLahOutput = this.steadyLah.getResponse(searchInput);
+        String[] steadyLahOutput = this.steadyLah.processCommandByMap(searchInput);
+        assert steadyLahOutput.length == 2
+                : "Error in processing user input: steadyLah bot must output only response and whether help is needed";
+        if (steadyLahOutput[1].equals("true")) {
+            // this.dialogueContainer.getChildren().add(DialogueBox.showUserDialogueBox(searchInput, this.userImage));
+            new HelpBox(steadyLahOutput[0]).showAndWait();
+            return;
+        }
         this.dialogueContainer.getChildren().addAll(
                 DialogueBox.showUserDialogueBox(searchInput, this.userImage),
-                DialogueBox.showSteadyLahDialogueBox(steadyLahOutput, this.steadyLahImage)
+                DialogueBox.showSteadyLahDialogueBox(steadyLahOutput[0], this.steadyLahImage)
         );
-        if (searchInput.equals("help")) {
-            new HelpBox().showHelp();
-        }
-        this.searchBox.clear();
     }
 }

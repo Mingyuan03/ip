@@ -19,8 +19,18 @@ public class HelpCommand extends Command {
 
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
-        return "You sought help! "
-                + "As Dumbledore says, help will always be given to those who ask for it!\n\n"
-                + Help.getFullHelp();
+        StringBuilder helpResponse = new StringBuilder("Steady bro! Help is on the way!\n\n");
+        boolean isSpecificHelp = false;
+        for (Help help : Help.values()) {
+            if (this.contentInput.equals(help.toString().toLowerCase())) {
+                helpResponse.append(help).append(":").append(help.getSpecificHelp());
+                isSpecificHelp = true;
+                break; // Adaptive search
+            }
+        }
+        if (!isSpecificHelp) {
+            helpResponse.append(Help.getFullHelp());
+        }
+        return helpResponse.toString();
     }
 }
